@@ -188,6 +188,26 @@
     .lb-nav:hover { background: rgba(255,255,255,0.18); }
     .lb-prev { left: 16px; }
     .lb-next { right: 16px; }
+    #lb-info {
+      margin-top: 10px;
+      display: flex; flex-direction: column; align-items: center; gap: 3px;
+      min-height: 44px;
+    }
+    #lb-artist {
+      font-size: 11px;
+      color: var(--accent2);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    #lb-title {
+      font-size: 15px;
+      color: #fff;
+      font-style: italic;
+    }
+    #lb-year {
+      font-size: 12px;
+      color: var(--muted);
+    }
 
     /* Footer */
     footer {
@@ -1391,6 +1411,11 @@
   <button class="lb-nav lb-prev" onclick="navLightbox(-1)">‹</button>
   <img id="lb-img" src="" alt="">
   <div class="lb-counter" id="lb-counter"></div>
+  <div id="lb-info">
+    <span id="lb-artist"></span>
+    <span id="lb-title"></span>
+    <span id="lb-year"></span>
+  </div>
   <button class="lb-nav lb-next" onclick="navLightbox(1)">›</button>
 </div>
 
@@ -1402,10 +1427,21 @@
   let currentIdx = 0;
   const photos = Array.from(document.querySelectorAll('.photo-item img'));
 
+  function updateLbMeta(idx) {
+    const item = photos[idx].closest('.photo-item');
+    const artist = item.dataset.artist && item.dataset.artist !== '—' ? item.dataset.artist : '';
+    const title  = item.dataset.title  && item.dataset.title  !== '—' ? item.dataset.title  : '';
+    const year   = item.dataset.year   && item.dataset.year   !== '—' ? item.dataset.year   : '';
+    document.getElementById('lb-artist').textContent = artist;
+    document.getElementById('lb-title').textContent  = title;
+    document.getElementById('lb-year').textContent   = year;
+  }
+
   function openLightbox(src, idx) {
     currentIdx = idx - 1;
     document.getElementById('lb-img').src = src;
     document.getElementById('lb-counter').textContent = idx + ' / ' + photos.length;
+    updateLbMeta(currentIdx);
     document.getElementById('lightbox').classList.add('open');
     document.body.style.overflow = 'hidden';
   }
@@ -1420,6 +1456,7 @@
     const img = photos[currentIdx];
     document.getElementById('lb-img').src = img.src;
     document.getElementById('lb-counter').textContent = (currentIdx + 1) + ' / ' + photos.length;
+    updateLbMeta(currentIdx);
   }
 
   document.addEventListener('keydown', e => {
