@@ -288,6 +288,38 @@
       border-radius: 20px;
       margin-bottom: 20px;
     }
+
+    .photo-meta {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.6) 60%, transparent 100%);
+      padding: 28px 10px 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+    }
+    .photo-item:hover .photo-meta { opacity: 1; }
+    .pm-artist {
+      font-size: 10px;
+      color: var(--accent2);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      font-family: 'Georgia', serif;
+    }
+    .pm-title {
+      font-size: 11px;
+      color: #fff;
+      font-style: italic;
+      line-height: 1.3;
+    }
+    .pm-year {
+      font-size: 10px;
+      color: var(--muted);
+    }
+    .photo-item { position: relative; overflow: hidden; }
   </style>
 </head>
 <body>
@@ -325,825 +357,1030 @@
 
   <div class="photo-grid" id="photoGrid">
 
-    <div class="photo-item" data-index="1">
+    <div class="photo-item" data-index="1" data-artist="Paul Gauguin" data-title="Vairumati" data-year="1897">
       <img src="photos/01_photo_022a30d386cc431da20aee6688914a2f.jpg" alt="Foto 1 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 1)">
       <div class="photo-num">1</div>
+      <div class="photo-meta"><span class="pm-artist">Paul Gauguin</span><span class="pm-title">Vairumati</span><span class="pm-year">1897</span></div>
     </div>
-    <div class="photo-item" data-index="2">
+    <div class="photo-item" data-index="2" data-artist="Camille Pissarro" data-title="La Moisson (Montfoucault)" data-year="1876">
       <img src="photos/02_photo_03cceb7ecc57402c9f954bf9475e32c2.jpg" alt="Foto 2 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 2)">
       <div class="photo-num">2</div>
+      <div class="photo-meta"><span class="pm-artist">Camille Pissarro</span><span class="pm-title">La Moisson (Montfoucault)</span><span class="pm-year">1876</span></div>
     </div>
-    <div class="photo-item" data-index="3">
+    <div class="photo-item" data-index="3" data-artist="Eva Gonzalès" data-title="Une loge aux Italiens" data-year="c. 1874">
       <img src="photos/03_photo_089fa74add16489bbbcf9b0cfdc0e32b.jpg" alt="Foto 3 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 3)">
       <div class="photo-num">3</div>
+      <div class="photo-meta"><span class="pm-artist">Eva Gonzalès</span><span class="pm-title">Une loge aux Italiens</span><span class="pm-year">c. 1874</span></div>
     </div>
-    <div class="photo-item" data-index="4">
+    <div class="photo-item" data-index="4" data-artist="Henri de Toulouse-Lautrec" data-title="Rousse (La Toilette)" data-year="1889">
       <img src="photos/04_photo_0d228fdd382f483b8ded29a4ad888691.jpg" alt="Foto 4 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 4)">
       <div class="photo-num">4</div>
+      <div class="photo-meta"><span class="pm-artist">Henri de Toulouse-Lautrec</span><span class="pm-title">Rousse (La Toilette)</span><span class="pm-year">1889</span></div>
     </div>
-    <div class="photo-item" data-index="5">
+    <div class="photo-item" data-index="5" data-artist="Edgar Degas" data-title="L'Orchestre de l'Opéra" data-year="c. 1870">
       <img src="photos/05_photo_13a4a082a5fc45a496b5fc82cf7925c6.jpg" alt="Foto 5 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 5)">
       <div class="photo-num">5</div>
+      <div class="photo-meta"><span class="pm-artist">Edgar Degas</span><span class="pm-title">L'Orchestre de l'Opéra</span><span class="pm-year">c. 1870</span></div>
     </div>
-    <div class="photo-item" data-index="6">
+    <div class="photo-item" data-index="6" data-artist="—" data-title="Ristorante cinese · menu" data-year="—">
       <img src="photos/06_photo_16cec9093f934e2c99bb93dd93cbff25.jpg" alt="Foto 6 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 6)">
       <div class="photo-num">6</div>
+      <div class="photo-meta"><span class="pm-title">Ristorante cinese · menu</span><span class="pm-year">—</span></div>
     </div>
-    <div class="photo-item" data-index="7">
+    <div class="photo-item" data-index="7" data-artist="Pierre-Auguste Renoir" data-title="Maternità" data-year="1885">
       <img src="photos/07_photo_1a7b46ad4dc143f38d6fbf68f144513a.jpg" alt="Foto 7 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 7)">
       <div class="photo-num">7</div>
+      <div class="photo-meta"><span class="pm-artist">Pierre-Auguste Renoir</span><span class="pm-title">Maternità</span><span class="pm-year">1885</span></div>
     </div>
-    <div class="photo-item" data-index="8">
+    <div class="photo-item" data-index="8" data-artist="Jean-François Millet" data-title="La Primavera (Le Printemps)" data-year="1868–1873">
       <img src="photos/08_photo_1bba4979994d4fee9ab6b49a082b748a.jpg" alt="Foto 8 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 8)">
       <div class="photo-num">8</div>
+      <div class="photo-meta"><span class="pm-artist">Jean-François Millet</span><span class="pm-title">La Primavera (Le Printemps)</span><span class="pm-year">1868–1873</span></div>
     </div>
-    <div class="photo-item" data-index="9">
+    <div class="photo-item" data-index="9" data-artist="Gustave Caillebotte" data-title="Tetti nella neve" data-year="1878">
       <img src="photos/09_photo_1cb43dd417ca41de967f72f70ea3a50d.jpg" alt="Foto 9 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 9)">
       <div class="photo-num">9</div>
+      <div class="photo-meta"><span class="pm-artist">Gustave Caillebotte</span><span class="pm-title">Tetti nella neve</span><span class="pm-year">1878</span></div>
     </div>
-    <div class="photo-item" data-index="10">
+    <div class="photo-item" data-index="10" data-artist="Alfred Sisley" data-title="Neve a Louveciennes" data-year="c. 1878">
       <img src="photos/10_photo_1d6ac3a06095407a83e90a6b2a284f6e.jpg" alt="Foto 10 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 10)">
       <div class="photo-num">10</div>
+      <div class="photo-meta"><span class="pm-artist">Alfred Sisley</span><span class="pm-title">Neve a Louveciennes</span><span class="pm-year">c. 1878</span></div>
     </div>
-    <div class="photo-item" data-index="11">
+    <div class="photo-item" data-index="11" data-artist="Paul Gauguin" data-title="Arearea (Joyousness)" data-year="1892">
       <img src="photos/11_photo_1e905d98e2bc44c1b5024c2073dfba94.jpg" alt="Foto 11 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 11)">
       <div class="photo-num">11</div>
+      <div class="photo-meta"><span class="pm-artist">Paul Gauguin</span><span class="pm-title">Arearea (Joyousness)</span><span class="pm-year">1892</span></div>
     </div>
-    <div class="photo-item" data-index="12">
+    <div class="photo-item" data-index="12" data-artist="Claude Monet" data-title="Crisantemi" data-year="1878">
       <img src="photos/12_photo_1ebd38d5873f47c3b57fdae6fc6aef0a.jpg" alt="Foto 12 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 12)">
       <div class="photo-num">12</div>
+      <div class="photo-meta"><span class="pm-artist">Claude Monet</span><span class="pm-title">Crisantemi</span><span class="pm-year">1878</span></div>
     </div>
-    <div class="photo-item" data-index="13">
+    <div class="photo-item" data-index="13" data-artist="—" data-title="Dolci mochi al ristorante" data-year="—">
       <img src="photos/13_photo_1ed41db068194594ad51f8e255035369.jpg" alt="Foto 13 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 13)">
       <div class="photo-num">13</div>
+      <div class="photo-meta"><span class="pm-title">Dolci mochi al ristorante</span><span class="pm-year">—</span></div>
     </div>
-    <div class="photo-item" data-index="14">
+    <div class="photo-item" data-index="14" data-artist="Gustave Boulanger" data-title="Prova del Flauto e della Moglie di Diomede" data-year="1861">
       <img src="photos/14_photo_241eef484c034731a07a5fae8fab76b8.jpg" alt="Foto 14 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 14)">
       <div class="photo-num">14</div>
+      <div class="photo-meta"><span class="pm-artist">Gustave Boulanger</span><span class="pm-title">Prova del Flauto e della Moglie di Diomede</span><span class="pm-year">1861</span></div>
     </div>
-    <div class="photo-item" data-index="15">
+    <div class="photo-item" data-index="15" data-artist="Eugène Delacroix" data-title="La Caccia al Leone (studio)" data-year="1854">
       <img src="photos/15_photo_2941482bfb7a4ea4a414070e2db25816.jpg" alt="Foto 15 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 15)">
       <div class="photo-num">15</div>
+      <div class="photo-meta"><span class="pm-artist">Eugène Delacroix</span><span class="pm-title">La Caccia al Leone (studio)</span><span class="pm-year">1854</span></div>
     </div>
-    <div class="photo-item" data-index="16">
+    <div class="photo-item" data-index="16" data-artist="Alfred Sisley" data-title="Paesaggi (trittico)" data-year="c. 1870s">
       <img src="photos/16_photo_2b9e7cd4d1814b899908070337aef66e.jpg" alt="Foto 16 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 16)">
       <div class="photo-num">16</div>
+      <div class="photo-meta"><span class="pm-artist">Alfred Sisley</span><span class="pm-title">Paesaggi (trittico)</span><span class="pm-year">c. 1870s</span></div>
     </div>
-    <div class="photo-item" data-index="17">
+    <div class="photo-item" data-index="17" data-artist="Alfred Sisley" data-title="Il Ponte di Moret" data-year="1893">
       <img src="photos/17_photo_2e49d8d9d8814802adfb3b93e5fe01d4.jpg" alt="Foto 17 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 17)">
       <div class="photo-num">17</div>
+      <div class="photo-meta"><span class="pm-artist">Alfred Sisley</span><span class="pm-title">Il Ponte di Moret</span><span class="pm-year">1893</span></div>
     </div>
-    <div class="photo-item" data-index="18">
+    <div class="photo-item" data-index="18" data-artist="Paul Gauguin" data-title="Il Cavallo Bianco" data-year="1898">
       <img src="photos/18_photo_2f10421a3f27471690d010a4d32185f3.jpg" alt="Foto 18 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 18)">
       <div class="photo-num">18</div>
+      <div class="photo-meta"><span class="pm-artist">Paul Gauguin</span><span class="pm-title">Il Cavallo Bianco</span><span class="pm-year">1898</span></div>
     </div>
-    <div class="photo-item" data-index="19">
+    <div class="photo-item" data-index="19" data-artist="Eugène Delacroix" data-title="Leonessa pronta a balzare" data-year="c. 1863">
       <img src="photos/19_photo_2f9a5353601643b9a3217976cdb2d380.jpg" alt="Foto 19 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 19)">
       <div class="photo-num">19</div>
+      <div class="photo-meta"><span class="pm-artist">Eugène Delacroix</span><span class="pm-title">Leonessa pronta a balzare</span><span class="pm-year">c. 1863</span></div>
     </div>
-    <div class="photo-item" data-index="20">
+    <div class="photo-item" data-index="20" data-artist="Vincent van Gogh" data-title="Fritillarie in un vaso di rame" data-year="1887">
       <img src="photos/20_photo_2fc03d39cfb04e649bfff62d30eee371.jpg" alt="Foto 20 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 20)">
       <div class="photo-num">20</div>
+      <div class="photo-meta"><span class="pm-artist">Vincent van Gogh</span><span class="pm-title">Fritillarie in un vaso di rame</span><span class="pm-year">1887</span></div>
     </div>
-    <div class="photo-item" data-index="21">
+    <div class="photo-item" data-index="21" data-artist="Pierre-Auguste Renoir" data-title="Danza in campagna" data-year="1883">
       <img src="photos/21_photo_306158be1de14008b12550ac1e5a6404.jpg" alt="Foto 21 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 21)">
       <div class="photo-num">21</div>
+      <div class="photo-meta"><span class="pm-artist">Pierre-Auguste Renoir</span><span class="pm-title">Danza in campagna</span><span class="pm-year">1883</span></div>
     </div>
-    <div class="photo-item" data-index="22">
+    <div class="photo-item" data-index="22" data-artist="—" data-title="Bouillon Chartier · menu" data-year="20 agosto 2025">
       <img src="photos/22_photo_40ea58f348ad47ffa799d55e3a33256f.jpg" alt="Foto 22 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 22)">
       <div class="photo-num">22</div>
+      <div class="photo-meta"><span class="pm-title">Bouillon Chartier · menu</span><span class="pm-year">20 agosto 2025</span></div>
     </div>
-    <div class="photo-item" data-index="23">
+    <div class="photo-item" data-index="23" data-artist="Eugène Delacroix" data-title="Il Puma (cartello museo)" data-year="1859">
       <img src="photos/23_photo_46be905519894c09a484525f55812330.jpg" alt="Foto 23 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 23)">
       <div class="photo-num">23</div>
+      <div class="photo-meta"><span class="pm-artist">Eugène Delacroix</span><span class="pm-title">Il Puma (cartello museo)</span><span class="pm-year">1859</span></div>
     </div>
-    <div class="photo-item" data-index="24">
+    <div class="photo-item" data-index="24" data-artist="—" data-title="Ristorante asiatico · menu" data-year="—">
       <img src="photos/24_photo_4761c75ca1e9473fb3297c7007835ce2.jpg" alt="Foto 24 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 24)">
       <div class="photo-num">24</div>
+      <div class="photo-meta"><span class="pm-title">Ristorante asiatico · menu</span><span class="pm-year">—</span></div>
     </div>
-    <div class="photo-item" data-index="25">
+    <div class="photo-item" data-index="25" data-artist="Claude Monet" data-title="La Rue Montorgueil, 30 giugno 1878" data-year="1878">
       <img src="photos/25_photo_4cbab4e2795746ad8443c600f5b5491a.jpg" alt="Foto 25 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 25)">
       <div class="photo-num">25</div>
+      <div class="photo-meta"><span class="pm-artist">Claude Monet</span><span class="pm-title">La Rue Montorgueil, 30 giugno 1878</span><span class="pm-year">1878</span></div>
     </div>
-    <div class="photo-item" data-index="26">
+    <div class="photo-item" data-index="26" data-artist="Paul Gauguin" data-title="Il Pasto (Le Repas)" data-year="1891">
       <img src="photos/26_photo_4dd7af243cee47f589d5da76fb09eaba.jpg" alt="Foto 26 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 26)">
       <div class="photo-num">26</div>
+      <div class="photo-meta"><span class="pm-artist">Paul Gauguin</span><span class="pm-title">Il Pasto (Le Repas)</span><span class="pm-year">1891</span></div>
     </div>
-    <div class="photo-item" data-index="27">
+    <div class="photo-item" data-index="27" data-artist="Édouard Manet" data-title="Le Déjeuner sur l'herbe" data-year="1863">
       <img src="photos/27_photo_4ffe7305899d4a6ead29e05237dc8469.jpg" alt="Foto 27 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 27)">
       <div class="photo-num">27</div>
+      <div class="photo-meta"><span class="pm-artist">Édouard Manet</span><span class="pm-title">Le Déjeuner sur l'herbe</span><span class="pm-year">1863</span></div>
     </div>
-    <div class="photo-item" data-index="28">
+    <div class="photo-item" data-index="28" data-artist="Claude Monet" data-title="Il Ponte ferroviario ad Argenteuil" data-year="1873">
       <img src="photos/28_photo_56cfd2ab8d5e45e5924b9593f3914a56.jpg" alt="Foto 28 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 28)">
       <div class="photo-num">28</div>
+      <div class="photo-meta"><span class="pm-artist">Claude Monet</span><span class="pm-title">Il Ponte ferroviario ad Argenteuil</span><span class="pm-year">1873</span></div>
     </div>
-    <div class="photo-item" data-index="29">
+    <div class="photo-item" data-index="29" data-artist="—" data-title="Ristorante asiatico · piatti" data-year="—">
       <img src="photos/29_photo_575059bf74b04cfaa9c84752a3ba56b2.jpg" alt="Foto 29 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 29)">
       <div class="photo-num">29</div>
+      <div class="photo-meta"><span class="pm-title">Ristorante asiatico · piatti</span><span class="pm-year">—</span></div>
     </div>
-    <div class="photo-item" data-index="30">
+    <div class="photo-item" data-index="30" data-artist="Paul Cézanne" data-title="Ritratto di Achille Emperaire" data-year="c. 1868">
       <img src="photos/30_photo_5980ff9cc0ab49539ffd4299edf2d03e.jpg" alt="Foto 30 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 30)">
       <div class="photo-num">30</div>
+      <div class="photo-meta"><span class="pm-artist">Paul Cézanne</span><span class="pm-title">Ritratto di Achille Emperaire</span><span class="pm-year">c. 1868</span></div>
     </div>
-    <div class="photo-item" data-index="31">
+    <div class="photo-item" data-index="31" data-artist="Henri Rousseau" data-title="L'Incantatrice di serpenti" data-year="1907">
       <img src="photos/31_photo_5a672fe02aa340069ef09214e1d58579.jpg" alt="Foto 31 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 31)">
       <div class="photo-num">31</div>
+      <div class="photo-meta"><span class="pm-artist">Henri Rousseau</span><span class="pm-title">L'Incantatrice di serpenti</span><span class="pm-year">1907</span></div>
     </div>
-    <div class="photo-item" data-index="32">
+    <div class="photo-item" data-index="32" data-artist="Jean-François Millet" data-title="La Filatrice" data-year="1868–1869">
       <img src="photos/32_photo_5f8c4030fc9346c38cfd0a8dbd69ddd8.jpg" alt="Foto 32 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 32)">
       <div class="photo-num">32</div>
+      <div class="photo-meta"><span class="pm-artist">Jean-François Millet</span><span class="pm-title">La Filatrice</span><span class="pm-year">1868–1869</span></div>
     </div>
-    <div class="photo-item" data-index="33">
+    <div class="photo-item" data-index="33" data-artist="Camille Pissarro" data-title="L'Orto, alberi in fiore, Pontoise" data-year="1877">
       <img src="photos/33_photo_5fcaf974f54a46ff85f8b85ba4ec29a9.jpg" alt="Foto 33 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 33)">
       <div class="photo-num">33</div>
+      <div class="photo-meta"><span class="pm-artist">Camille Pissarro</span><span class="pm-title">L'Orto, alberi in fiore, Pontoise</span><span class="pm-year">1877</span></div>
     </div>
-    <div class="photo-item" data-index="34">
+    <div class="photo-item" data-index="34" data-artist="Pierre-Auguste Renoir" data-title="Alphonsine Fournaise" data-year="1879">
       <img src="photos/34_photo_63844312148d4552aa739c0a3c378caa.jpg" alt="Foto 34 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 34)">
       <div class="photo-num">34</div>
+      <div class="photo-meta"><span class="pm-artist">Pierre-Auguste Renoir</span><span class="pm-title">Alphonsine Fournaise</span><span class="pm-year">1879</span></div>
     </div>
-    <div class="photo-item" data-index="35">
+    <div class="photo-item" data-index="35" data-artist="Henri de Toulouse-Lautrec" data-title="Donna con boa nero" data-year="1892">
       <img src="photos/35_photo_6645101364484f1886d8faf980fed6af.jpg" alt="Foto 35 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 35)">
       <div class="photo-num">35</div>
+      <div class="photo-meta"><span class="pm-artist">Henri de Toulouse-Lautrec</span><span class="pm-title">Donna con boa nero</span><span class="pm-year">1892</span></div>
     </div>
-    <div class="photo-item" data-index="36">
+    <div class="photo-item" data-index="36" data-artist="Vincent van Gogh" data-title="Pini davanti al Manicomio" data-year="1889">
       <img src="photos/36_photo_6725d25369874ee892d40cb62f9a8c24.jpg" alt="Foto 36 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 36)">
       <div class="photo-num">36</div>
+      <div class="photo-meta"><span class="pm-artist">Vincent van Gogh</span><span class="pm-title">Pini davanti al Manicomio</span><span class="pm-year">1889</span></div>
     </div>
-    <div class="photo-item" data-index="37">
+    <div class="photo-item" data-index="37" data-artist="Émile Bernard" data-title="Bretoni con ombrellini" data-year="1892">
       <img src="photos/37_photo_686eaa5b19a84a2d8e483e673fcaf1b1.jpg" alt="Foto 37 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 37)">
       <div class="photo-num">37</div>
+      <div class="photo-meta"><span class="pm-artist">Émile Bernard</span><span class="pm-title">Bretoni con ombrellini</span><span class="pm-year">1892</span></div>
     </div>
-    <div class="photo-item" data-index="38">
+    <div class="photo-item" data-index="38" data-artist="Edgar Degas" data-title="Arlecchino e Colombina" data-year="c. 1886–1890">
       <img src="photos/38_photo_6927bf16e9e64f0ba799ddfcb4c56b69.jpg" alt="Foto 38 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 38)">
       <div class="photo-num">38</div>
+      <div class="photo-meta"><span class="pm-artist">Edgar Degas</span><span class="pm-title">Arlecchino e Colombina</span><span class="pm-year">c. 1886–1890</span></div>
     </div>
-    <div class="photo-item" data-index="39">
+    <div class="photo-item" data-index="39" data-artist="Gustave Courbet" data-title="La Scogliera a Étretat dopo la tempesta" data-year="1870">
       <img src="photos/39_photo_69d3a2e217754fd983025ca8f0579ea6.jpg" alt="Foto 39 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 39)">
       <div class="photo-num">39</div>
+      <div class="photo-meta"><span class="pm-artist">Gustave Courbet</span><span class="pm-title">La Scogliera a Étretat dopo la tempesta</span><span class="pm-year">1870</span></div>
     </div>
-    <div class="photo-item" data-index="40">
+    <div class="photo-item" data-index="40" data-artist="Vincent van Gogh" data-title="La Chiesa di Auvers" data-year="1890">
       <img src="photos/40_photo_6c1ac7d419c4410086fc12070bd828c7.jpg" alt="Foto 40 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 40)">
       <div class="photo-num">40</div>
+      <div class="photo-meta"><span class="pm-artist">Vincent van Gogh</span><span class="pm-title">La Chiesa di Auvers</span><span class="pm-year">1890</span></div>
     </div>
-    <div class="photo-item" data-index="41">
+    <div class="photo-item" data-index="41" data-artist="Claude Monet" data-title="Mare in tempesta a Étretat" data-year="1868–1869">
       <img src="photos/41_photo_6deb7f60e7f242f4a58e46cfef6ee1d2.jpg" alt="Foto 41 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 41)">
       <div class="photo-num">41</div>
+      <div class="photo-meta"><span class="pm-artist">Claude Monet</span><span class="pm-title">Mare in tempesta a Étretat</span><span class="pm-year">1868–1869</span></div>
     </div>
-    <div class="photo-item" data-index="42">
+    <div class="photo-item" data-index="42" data-artist="Pierre-Auguste Renoir" data-title="Paesaggio" data-year="c. 1880s">
       <img src="photos/42_photo_6e34a11795e441c180b54a514fe15762.jpg" alt="Foto 42 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 42)">
       <div class="photo-num">42</div>
+      <div class="photo-meta"><span class="pm-artist">Pierre-Auguste Renoir</span><span class="pm-title">Paesaggio</span><span class="pm-year">c. 1880s</span></div>
     </div>
-    <div class="photo-item" data-index="43">
+    <div class="photo-item" data-index="43" data-artist="Henri Fantin-Latour" data-title="Omaggio a Delacroix" data-year="1864">
       <img src="photos/43_photo_6ea5a346e02443fe95c33359341babfb.jpg" alt="Foto 43 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 43)">
       <div class="photo-num">43</div>
+      <div class="photo-meta"><span class="pm-artist">Henri Fantin-Latour</span><span class="pm-title">Omaggio a Delacroix</span><span class="pm-year">1864</span></div>
     </div>
-    <div class="photo-item" data-index="44">
+    <div class="photo-item" data-index="44" data-artist="Eugène Delacroix" data-title="Cavalli arabi che lottano in una stalla" data-year="1860">
       <img src="photos/44_photo_6ee8096120c14e6a91214aae25817bfb.jpg" alt="Foto 44 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 44)">
       <div class="photo-num">44</div>
+      <div class="photo-meta"><span class="pm-artist">Eugène Delacroix</span><span class="pm-title">Cavalli arabi che lottano in una stalla</span><span class="pm-year">1860</span></div>
     </div>
-    <div class="photo-item" data-index="45">
+    <div class="photo-item" data-index="45" data-artist="Henri Fantin-Latour" data-title="Ritratto di Madame Lerolle" data-year="1882">
       <img src="photos/45_photo_73e5a9b611cc4cfaaae78748f87c6b31.jpg" alt="Foto 45 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 45)">
       <div class="photo-num">45</div>
+      <div class="photo-meta"><span class="pm-artist">Henri Fantin-Latour</span><span class="pm-title">Ritratto di Madame Lerolle</span><span class="pm-year">1882</span></div>
     </div>
-    <div class="photo-item" data-index="46">
+    <div class="photo-item" data-index="46" data-artist="Édouard Manet" data-title="Il Pifferaio (Le Fifre)" data-year="1866">
       <img src="photos/46_photo_76af9facb5f1400485e3fe1be1d07cec.jpg" alt="Foto 46 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 46)">
       <div class="photo-num">46</div>
+      <div class="photo-meta"><span class="pm-artist">Édouard Manet</span><span class="pm-title">Il Pifferaio (Le Fifre)</span><span class="pm-year">1866</span></div>
     </div>
-    <div class="photo-item" data-index="47">
+    <div class="photo-item" data-index="47" data-artist="Edgar Degas" data-title="La Prova del balletto sul palco" data-year="1874">
       <img src="photos/47_photo_7b89c7f6baeb437a869a4354572f80b7.jpg" alt="Foto 47 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 47)">
       <div class="photo-num">47</div>
+      <div class="photo-meta"><span class="pm-artist">Edgar Degas</span><span class="pm-title">La Prova del balletto sul palco</span><span class="pm-year">1874</span></div>
     </div>
-    <div class="photo-item" data-index="48">
+    <div class="photo-item" data-index="48" data-artist="Alfred Sisley" data-title="La Senna a Suresnes" data-year="1877">
       <img src="photos/48_photo_7e4beb4fd902412c9584c25ef3c3e8f3.jpg" alt="Foto 48 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 48)">
       <div class="photo-num">48</div>
+      <div class="photo-meta"><span class="pm-artist">Alfred Sisley</span><span class="pm-title">La Senna a Suresnes</span><span class="pm-year">1877</span></div>
     </div>
-    <div class="photo-item" data-index="49">
+    <div class="photo-item" data-index="49" data-artist="William-Adolphe Bouguereau" data-title="L'Assalto (L'Assaut)" data-year="1898">
       <img src="photos/49_photo_82c7029d654448189e15c5109a3d4ed3.jpg" alt="Foto 49 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 49)">
       <div class="photo-num">49</div>
+      <div class="photo-meta"><span class="pm-artist">William-Adolphe Bouguereau</span><span class="pm-title">L'Assalto (L'Assaut)</span><span class="pm-year">1898</span></div>
     </div>
-    <div class="photo-item" data-index="50">
+    <div class="photo-item" data-index="50" data-artist="Alfred Sisley" data-title="Canal du Loing" data-year="1884">
       <img src="photos/50_photo_851030969ccc489380ae3c4655f535a0.jpg" alt="Foto 50 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 50)">
       <div class="photo-num">50</div>
+      <div class="photo-meta"><span class="pm-artist">Alfred Sisley</span><span class="pm-title">Canal du Loing</span><span class="pm-year">1884</span></div>
     </div>
-    <div class="photo-item" data-index="51">
+    <div class="photo-item" data-index="51" data-artist="Pierre-Auguste Renoir" data-title="La Senna ad Argenteuil" data-year="1873">
       <img src="photos/51_photo_8d35e94406354ea8bdacb17ad7dbd221.jpg" alt="Foto 51 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 51)">
       <div class="photo-num">51</div>
+      <div class="photo-meta"><span class="pm-artist">Pierre-Auguste Renoir</span><span class="pm-title">La Senna ad Argenteuil</span><span class="pm-year">1873</span></div>
     </div>
-    <div class="photo-item" data-index="52">
+    <div class="photo-item" data-index="52" data-artist="Claude Monet" data-title="Regate ad Argenteuil" data-year="c. 1872">
       <img src="photos/52_photo_8f7cb5e9b0da46e18eadc623001c4dac.jpg" alt="Foto 52 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 52)">
       <div class="photo-num">52</div>
+      <div class="photo-meta"><span class="pm-artist">Claude Monet</span><span class="pm-title">Regate ad Argenteuil</span><span class="pm-year">c. 1872</span></div>
     </div>
-    <div class="photo-item" data-index="53">
+    <div class="photo-item" data-index="53" data-artist="Edgar Degas" data-title="Le Stiratrice (Les Repasseuses)" data-year="c. 1884–1886">
       <img src="photos/53_photo_93038ff109df459aab5f98ff17f2f149.jpg" alt="Foto 53 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 53)">
       <div class="photo-num">53</div>
+      <div class="photo-meta"><span class="pm-artist">Edgar Degas</span><span class="pm-title">Le Stiratrice (Les Repasseuses)</span><span class="pm-year">c. 1884–1886</span></div>
     </div>
-    <div class="photo-item" data-index="54">
+    <div class="photo-item" data-index="54" data-artist="Henri de Toulouse-Lautrec" data-title="Il Letto (Le Lit)" data-year="1892">
       <img src="photos/54_photo_972b2ccc45e44bac8efd0631bedc793c.jpg" alt="Foto 54 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 54)">
       <div class="photo-num">54</div>
+      <div class="photo-meta"><span class="pm-artist">Henri de Toulouse-Lautrec</span><span class="pm-title">Il Letto (Le Lit)</span><span class="pm-year">1892</span></div>
     </div>
-    <div class="photo-item" data-index="55">
+    <div class="photo-item" data-index="55" data-artist="Vincent van Gogh" data-title="Casupole a Cordeville" data-year="1890">
       <img src="photos/55_photo_a0ce334572124665a802caa13ed0d7fe.jpg" alt="Foto 55 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 55)">
       <div class="photo-num">55</div>
+      <div class="photo-meta"><span class="pm-artist">Vincent van Gogh</span><span class="pm-title">Casupole a Cordeville</span><span class="pm-year">1890</span></div>
     </div>
-    <div class="photo-item" data-index="56">
+    <div class="photo-item" data-index="56" data-artist="Gustave Guillaumet" data-title="Il Sahara" data-year="1867">
       <img src="photos/56_photo_a192e9df741442bc9994b2afc0461a37.jpg" alt="Foto 56 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 56)">
       <div class="photo-num">56</div>
+      <div class="photo-meta"><span class="pm-artist">Gustave Guillaumet</span><span class="pm-title">Il Sahara</span><span class="pm-year">1867</span></div>
     </div>
-    <div class="photo-item" data-index="57">
+    <div class="photo-item" data-index="57" data-artist="James Tissot" data-title="La Sognatrice (Serata estiva)" data-year="c. 1881">
       <img src="photos/57_photo_a2269352530f42b1b4a296b5c1d981aa.jpg" alt="Foto 57 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 57)">
       <div class="photo-num">57</div>
+      <div class="photo-meta"><span class="pm-artist">James Tissot</span><span class="pm-title">La Sognatrice (Serata estiva)</span><span class="pm-year">c. 1881</span></div>
     </div>
-    <div class="photo-item" data-index="58">
+    <div class="photo-item" data-index="58" data-artist="Roderic O'Conor" data-title="Ragazzo bretone" data-year="1893">
       <img src="photos/58_photo_a3be0a85745249218e1f27304287e15d.jpg" alt="Foto 58 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 58)">
       <div class="photo-num">58</div>
+      <div class="photo-meta"><span class="pm-artist">Roderic O'Conor</span><span class="pm-title">Ragazzo bretone</span><span class="pm-year">1893</span></div>
     </div>
-    <div class="photo-item" data-index="59">
+    <div class="photo-item" data-index="59" data-artist="Camille Pissarro" data-title="Porto di Rouen, Saint-Sever" data-year="1896">
       <img src="photos/59_photo_a547a6943d6c4c038b48db54be1f8cc5.jpg" alt="Foto 59 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 59)">
       <div class="photo-num">59</div>
+      <div class="photo-meta"><span class="pm-artist">Camille Pissarro</span><span class="pm-title">Porto di Rouen, Saint-Sever</span><span class="pm-year">1896</span></div>
     </div>
-    <div class="photo-item" data-index="60">
+    <div class="photo-item" data-index="60" data-artist="Paul Cézanne" data-title="Cristo al Limbo" data-year="c. 1867">
       <img src="photos/60_photo_a601ed09bea64d669debfc052a707b33.jpg" alt="Foto 60 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 60)">
       <div class="photo-num">60</div>
+      <div class="photo-meta"><span class="pm-artist">Paul Cézanne</span><span class="pm-title">Cristo al Limbo</span><span class="pm-year">c. 1867</span></div>
     </div>
-    <div class="photo-item" data-index="61">
+    <div class="photo-item" data-index="61" data-artist="Edgar Degas" data-title="Il Pedicure" data-year="1873">
       <img src="photos/61_photo_aebb126520ab49f7ba4f548f84a9ef30.jpg" alt="Foto 61 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 61)">
       <div class="photo-num">61</div>
+      <div class="photo-meta"><span class="pm-artist">Edgar Degas</span><span class="pm-title">Il Pedicure</span><span class="pm-year">1873</span></div>
     </div>
-    <div class="photo-item" data-index="62">
+    <div class="photo-item" data-index="62" data-artist="Edgar Degas" data-title="Donna seduta accanto a un vaso di fiori" data-year="1865">
       <img src="photos/62_photo_b09d477d97804bcc9f8f73b47b262e42.jpg" alt="Foto 62 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 62)">
       <div class="photo-num">62</div>
+      <div class="photo-meta"><span class="pm-artist">Edgar Degas</span><span class="pm-title">Donna seduta accanto a un vaso di fiori</span><span class="pm-year">1865</span></div>
     </div>
-    <div class="photo-item" data-index="63">
+    <div class="photo-item" data-index="63" data-artist="—" data-title="Obelisco di Luxor, Place de la Concorde" data-year="—">
       <img src="photos/63_photo_b21b2ff7ded44c93aaea86b66a8864a1.jpg" alt="Foto 63 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 63)">
       <div class="photo-num">63</div>
+      <div class="photo-meta"><span class="pm-title">Obelisco di Luxor, Place de la Concorde</span><span class="pm-year">—</span></div>
     </div>
-    <div class="photo-item" data-index="64">
+    <div class="photo-item" data-index="64" data-artist="Odilon Redon" data-title="Alberi su fondo giallo" data-year="1901">
       <img src="photos/64_photo_b46ad01dca1e4e84b61ced3a9ce15d0c.jpg" alt="Foto 64 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 64)">
       <div class="photo-num">64</div>
+      <div class="photo-meta"><span class="pm-artist">Odilon Redon</span><span class="pm-title">Alberi su fondo giallo</span><span class="pm-year">1901</span></div>
     </div>
-    <div class="photo-item" data-index="65">
+    <div class="photo-item" data-index="65" data-artist="Pierre-Auguste Renoir" data-title="Le Bagnanti (Les Baigneuses)" data-year="1918–1919">
       <img src="photos/65_photo_b92f95102f2243e18ab938483dc4c654.jpg" alt="Foto 65 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 65)">
       <div class="photo-num">65</div>
+      <div class="photo-meta"><span class="pm-artist">Pierre-Auguste Renoir</span><span class="pm-title">Le Bagnanti (Les Baigneuses)</span><span class="pm-year">1918–1919</span></div>
     </div>
-    <div class="photo-item" data-index="66">
+    <div class="photo-item" data-index="66" data-artist="Pierre-Auguste Renoir" data-title="Danza in città" data-year="1883">
       <img src="photos/66_photo_c3bdb982318f44e68cf31897450071e0.jpg" alt="Foto 66 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 66)">
       <div class="photo-num">66</div>
+      <div class="photo-meta"><span class="pm-artist">Pierre-Auguste Renoir</span><span class="pm-title">Danza in città</span><span class="pm-year">1883</span></div>
     </div>
-    <div class="photo-item" data-index="67">
+    <div class="photo-item" data-index="67" data-artist="Paul Signac" data-title="Donna con parasole" data-year="1893">
       <img src="photos/67_photo_c78dc2909ce64e458cc1b0678e63c820.jpg" alt="Foto 67 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 67)">
       <div class="photo-num">67</div>
+      <div class="photo-meta"><span class="pm-artist">Paul Signac</span><span class="pm-title">Donna con parasole</span><span class="pm-year">1893</span></div>
     </div>
-    <div class="photo-item" data-index="68">
+    <div class="photo-item" data-index="68" data-artist="Gustave Courbet" data-title="Ritratto d'uomo" data-year="c. 1849">
       <img src="photos/68_photo_cdc0a7f8a5c04f28a28caf5a16e5ff51.jpg" alt="Foto 68 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 68)">
       <div class="photo-num">68</div>
+      <div class="photo-meta"><span class="pm-artist">Gustave Courbet</span><span class="pm-title">Ritratto d'uomo</span><span class="pm-year">c. 1849</span></div>
     </div>
-    <div class="photo-item" data-index="69">
+    <div class="photo-item" data-index="69" data-artist="Pierre-Auguste Renoir" data-title="Ballo al Moulin de la Galette" data-year="1876">
       <img src="photos/69_photo_d1cfc71cf41e455e948b7ce7e1ed1719.jpg" alt="Foto 69 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 69)">
       <div class="photo-num">69</div>
+      <div class="photo-meta"><span class="pm-artist">Pierre-Auguste Renoir</span><span class="pm-title">Ballo al Moulin de la Galette</span><span class="pm-year">1876</span></div>
     </div>
-    <div class="photo-item" data-index="70">
+    <div class="photo-item" data-index="70" data-artist="Paul Signac" data-title="Il Porto di La Rochelle" data-year="1921">
       <img src="photos/70_photo_d27bacc3696a46438ef6c0a3f16ed683.jpg" alt="Foto 70 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 70)">
       <div class="photo-num">70</div>
+      <div class="photo-meta"><span class="pm-artist">Paul Signac</span><span class="pm-title">Il Porto di La Rochelle</span><span class="pm-year">1921</span></div>
     </div>
-    <div class="photo-item" data-index="71">
+    <div class="photo-item" data-index="71" data-artist="Édouard Manet" data-title="Il Limone (Le Citron)" data-year="1880">
       <img src="photos/71_photo_d60dfa58d06d4eaaade2799308ce9945.jpg" alt="Foto 71 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 71)">
       <div class="photo-num">71</div>
+      <div class="photo-meta"><span class="pm-artist">Édouard Manet</span><span class="pm-title">Il Limone (Le Citron)</span><span class="pm-year">1880</span></div>
     </div>
-    <div class="photo-item" data-index="72">
+    <div class="photo-item" data-index="72" data-artist="Frédéric Bazille" data-title="Riunione di famiglia" data-year="1867">
       <img src="photos/72_photo_d90716246bfc44119ec22425f2e84e2b.jpg" alt="Foto 72 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 72)">
       <div class="photo-num">72</div>
+      <div class="photo-meta"><span class="pm-artist">Frédéric Bazille</span><span class="pm-title">Riunione di famiglia</span><span class="pm-year">1867</span></div>
     </div>
-    <div class="photo-item" data-index="73">
+    <div class="photo-item" data-index="73" data-artist="Paul Cézanne" data-title="Mele e arance" data-year="c. 1899">
       <img src="photos/73_photo_ddf9e5496e2640b6920774d43f722fea.jpg" alt="Foto 73 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 73)">
       <div class="photo-num">73</div>
+      <div class="photo-meta"><span class="pm-artist">Paul Cézanne</span><span class="pm-title">Mele e arance</span><span class="pm-year">c. 1899</span></div>
     </div>
-    <div class="photo-item" data-index="74">
+    <div class="photo-item" data-index="74" data-artist="Claude Monet" data-title="Un angolo dell'appartamento" data-year="1875">
       <img src="photos/74_photo_de1b447c01ff4688b2c8a754d3d6541d.jpg" alt="Foto 74 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 74)">
       <div class="photo-num">74</div>
+      <div class="photo-meta"><span class="pm-artist">Claude Monet</span><span class="pm-title">Un angolo dell'appartamento</span><span class="pm-year">1875</span></div>
     </div>
-    <div class="photo-item" data-index="75">
+    <div class="photo-item" data-index="75" data-artist="Edgar Degas" data-title="Ballerine blu" data-year="c. 1890">
       <img src="photos/75_photo_e2eba8d6db9244c988b71dfcff5b369a.jpg" alt="Foto 75 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 75)">
       <div class="photo-num">75</div>
+      <div class="photo-meta"><span class="pm-artist">Edgar Degas</span><span class="pm-title">Ballerine blu</span><span class="pm-year">c. 1890</span></div>
     </div>
-    <div class="photo-item" data-index="76">
+    <div class="photo-item" data-index="76" data-artist="Edgar Degas" data-title="Ritratti alla Borsa" data-year="c. 1878–1879">
       <img src="photos/76_photo_e360936082604cde9e7fe6a8b71ab334.jpg" alt="Foto 76 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 76)">
       <div class="photo-num">76</div>
+      <div class="photo-meta"><span class="pm-artist">Edgar Degas</span><span class="pm-title">Ritratti alla Borsa</span><span class="pm-year">c. 1878–1879</span></div>
     </div>
-    <div class="photo-item" data-index="77">
+    <div class="photo-item" data-index="77" data-artist="Alfred Sisley" data-title="Neve nel cortile della fattoria a Marly-le-Roi" data-year="1876">
       <img src="photos/77_photo_e88fc00b9d164b0086f91fa60b4bbee7.jpg" alt="Foto 77 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 77)">
       <div class="photo-num">77</div>
+      <div class="photo-meta"><span class="pm-artist">Alfred Sisley</span><span class="pm-title">Neve nel cortile della fattoria a Marly-le-Roi</span><span class="pm-year">1876</span></div>
     </div>
-    <div class="photo-item" data-index="78">
+    <div class="photo-item" data-index="78" data-artist="Camille Pissarro" data-title="Donna con scialle verde" data-year="1893">
       <img src="photos/78_photo_e8aeda3b727240faaa42c53bbfe2c593.jpg" alt="Foto 78 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 78)">
       <div class="photo-num">78</div>
+      <div class="photo-meta"><span class="pm-artist">Camille Pissarro</span><span class="pm-title">Donna con scialle verde</span><span class="pm-year">1893</span></div>
     </div>
-    <div class="photo-item" data-index="79">
+    <div class="photo-item" data-index="79" data-artist="Rosa Bonheur" data-title="L'Aratura nel Nièvre" data-year="1849">
       <img src="photos/79_photo_e9f1648145504a9cb8184b450b844083.jpg" alt="Foto 79 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 79)">
       <div class="photo-num">79</div>
+      <div class="photo-meta"><span class="pm-artist">Rosa Bonheur</span><span class="pm-title">L'Aratura nel Nièvre</span><span class="pm-year">1849</span></div>
     </div>
-    <div class="photo-item" data-index="80">
+    <div class="photo-item" data-index="80" data-artist="Georges Lemmen" data-title="Ritratto di Madame Lemmen" data-year="c. 1891">
       <img src="photos/80_photo_ee044dccd5154f25be7517bf3d2d7ea9.jpg" alt="Foto 80 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 80)">
       <div class="photo-num">80</div>
+      <div class="photo-meta"><span class="pm-artist">Georges Lemmen</span><span class="pm-title">Ritratto di Madame Lemmen</span><span class="pm-year">c. 1891</span></div>
     </div>
-    <div class="photo-item" data-index="81">
+    <div class="photo-item" data-index="81" data-artist="Jean-Auguste-Dominique Ingres" data-title="La Vergine adorante l'Ostia" data-year="1854">
       <img src="photos/81_photo_eef4290cef5d40f4afe6c69b59487ab5.jpg" alt="Foto 81 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 81)">
       <div class="photo-num">81</div>
+      <div class="photo-meta"><span class="pm-artist">Jean-Auguste-Dominique Ingres</span><span class="pm-title">La Vergine adorante l'Ostia</span><span class="pm-year">1854</span></div>
     </div>
-    <div class="photo-item" data-index="82">
+    <div class="photo-item" data-index="82" data-artist="—" data-title="Ritratto femminile (autore ignoto)" data-year="—">
       <img src="photos/82_photo_f5975c455add4472ae3d50c24cf8bf63.jpg" alt="Foto 82 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 82)">
       <div class="photo-num">82</div>
+      <div class="photo-meta"><span class="pm-title">Ritratto femminile (autore ignoto)</span><span class="pm-year">—</span></div>
     </div>
-    <div class="photo-item" data-index="83">
+    <div class="photo-item" data-index="83" data-artist="Georges Braque" data-title="Il Portoghese" data-year="1911">
       <img src="photos/83_photo_005d9e83048e43fa93b698c8f14749a3.jpg" alt="Foto 83 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 83)">
       <div class="photo-num">83</div>
+      <div class="photo-meta"><span class="pm-artist">Georges Braque</span><span class="pm-title">Il Portoghese</span><span class="pm-year">1911</span></div>
     </div>
-    <div class="photo-item" data-index="84">
+    <div class="photo-item" data-index="84" data-artist="Pablo Picasso" data-title="Ritratto di Gustave Coquiot" data-year="1901">
       <img src="photos/84_photo_0255ff965d8340a4a006120911172c20.jpg" alt="Foto 84 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 84)">
       <div class="photo-num">84</div>
+      <div class="photo-meta"><span class="pm-artist">Pablo Picasso</span><span class="pm-title">Ritratto di Gustave Coquiot</span><span class="pm-year">1901</span></div>
     </div>
-    <div class="photo-item" data-index="85">
+    <div class="photo-item" data-index="85" data-artist="—" data-title="Cista 'Napoléon' (bronzo etrusco)" data-year="c. 350–300 a.C.">
       <img src="photos/85_photo_06d2348507844238a94229f9fa3108f4.jpg" alt="Foto 85 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 85)">
       <div class="photo-num">85</div>
+      <div class="photo-meta"><span class="pm-title">Cista 'Napoléon' (bronzo etrusco)</span><span class="pm-year">c. 350–300 a.C.</span></div>
     </div>
-    <div class="photo-item" data-index="86">
+    <div class="photo-item" data-index="86" data-artist="—" data-title="Diana di Versailles (scultura romana)" data-year="c. I–II sec. d.C.">
       <img src="photos/86_photo_089586cb6c074235afd9a2c44622f3fa.jpg" alt="Foto 86 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 86)">
       <div class="photo-num">86</div>
+      <div class="photo-meta"><span class="pm-title">Diana di Versailles (scultura romana)</span><span class="pm-year">c. I–II sec. d.C.</span></div>
     </div>
-    <div class="photo-item" data-index="87">
+    <div class="photo-item" data-index="87" data-artist="Amedeo Modigliani" data-title="Donna con nastro di velluto" data-year="1915">
       <img src="photos/87_photo_08b60ebc37d54fd9889412b213530f1e.jpg" alt="Foto 87 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 87)">
       <div class="photo-num">87</div>
+      <div class="photo-meta"><span class="pm-artist">Amedeo Modigliani</span><span class="pm-title">Donna con nastro di velluto</span><span class="pm-year">1915</span></div>
     </div>
-    <div class="photo-item" data-index="88">
+    <div class="photo-item" data-index="88" data-artist="Anthony van Dyck" data-title="Ritratto di dama genovese" data-year="c. 1624–1626">
       <img src="photos/88_photo_09b91b6af18e4ed89769a1186fd685b7.jpg" alt="Foto 88 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 88)">
       <div class="photo-num">88</div>
+      <div class="photo-meta"><span class="pm-artist">Anthony van Dyck</span><span class="pm-title">Ritratto di dama genovese</span><span class="pm-year">c. 1624–1626</span></div>
     </div>
-    <div class="photo-item" data-index="89">
+    <div class="photo-item" data-index="89" data-artist="Raffaello Sanzio" data-title="Ritratto di Baldassare Castiglione" data-year="c. 1514–1515">
       <img src="photos/89_photo_0ac206aeb56643a9823bdc2605f47152.jpg" alt="Foto 89 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 89)">
       <div class="photo-num">89</div>
+      <div class="photo-meta"><span class="pm-artist">Raffaello Sanzio</span><span class="pm-title">Ritratto di Baldassare Castiglione</span><span class="pm-year">c. 1514–1515</span></div>
     </div>
-    <div class="photo-item" data-index="90">
+    <div class="photo-item" data-index="90" data-artist="Jacques-Louis David" data-title="L'Incoronazione di Napoleone" data-year="1807">
       <img src="photos/90_photo_0c5e67003d8a4bfc8c3db7556dab9ec5.jpg" alt="Foto 90 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 90)">
       <div class="photo-num">90</div>
+      <div class="photo-meta"><span class="pm-artist">Jacques-Louis David</span><span class="pm-title">L'Incoronazione di Napoleone</span><span class="pm-year">1807</span></div>
     </div>
-    <div class="photo-item" data-index="91">
+    <div class="photo-item" data-index="91" data-artist="Pablo Picasso" data-title="L'Aubade (La Serenata)" data-year="1942">
       <img src="photos/91_photo_0c758efb32e94ecaa10b696aca3e4e92.jpg" alt="Foto 91 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 91)">
       <div class="photo-num">91</div>
+      <div class="photo-meta"><span class="pm-artist">Pablo Picasso</span><span class="pm-title">L'Aubade (La Serenata)</span><span class="pm-year">1942</span></div>
     </div>
-    <div class="photo-item" data-index="92">
+    <div class="photo-item" data-index="92" data-artist="Anthony van Dyck" data-title="Ritratto equestre di Francisco de Moncada" data-year="c. 1634">
       <img src="photos/92_photo_0ee7287fed7448efb94a312f9f93baf6.jpg" alt="Foto 92 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 92)">
       <div class="photo-num">92</div>
+      <div class="photo-meta"><span class="pm-artist">Anthony van Dyck</span><span class="pm-title">Ritratto equestre di Francisco de Moncada</span><span class="pm-year">c. 1634</span></div>
     </div>
-    <div class="photo-item" data-index="93">
+    <div class="photo-item" data-index="93" data-artist="Pablo Picasso" data-title="Tre figure sotto un albero" data-year="1907–1908">
       <img src="photos/93_photo_1150458140544c9887e41fce9b51405e.jpg" alt="Foto 93 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 93)">
       <div class="photo-num">93</div>
+      <div class="photo-meta"><span class="pm-artist">Pablo Picasso</span><span class="pm-title">Tre figure sotto un albero</span><span class="pm-year">1907–1908</span></div>
     </div>
-    <div class="photo-item" data-index="94">
+    <div class="photo-item" data-index="94" data-artist="—" data-title="Capitello a toro, palazzo di Dario I (Susa)" data-year="c. 510 a.C.">
       <img src="photos/94_photo_123efebcdd634bef951cbe0da9e64244.jpg" alt="Foto 94 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 94)">
       <div class="photo-num">94</div>
+      <div class="photo-meta"><span class="pm-title">Capitello a toro, palazzo di Dario I (Susa)</span><span class="pm-year">c. 510 a.C.</span></div>
     </div>
-    <div class="photo-item" data-index="95">
+    <div class="photo-item" data-index="95" data-artist="Raffaello (bottega)" data-title="Santa Margherita" data-year="c. 1518">
       <img src="photos/95_photo_1513a8344ae0447a91232ece768b2913.jpg" alt="Foto 95 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 95)">
       <div class="photo-num">95</div>
+      <div class="photo-meta"><span class="pm-artist">Raffaello (bottega)</span><span class="pm-title">Santa Margherita</span><span class="pm-year">c. 1518</span></div>
     </div>
-    <div class="photo-item" data-index="96">
+    <div class="photo-item" data-index="96" data-artist="Claude Monet" data-title="Ninfee (Orangerie)" data-year="c. 1914–1926">
       <img src="photos/96_photo_170ffe2dcf954c28a90b04e82e65f5a7.jpg" alt="Foto 96 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 96)">
       <div class="photo-num">96</div>
+      <div class="photo-meta"><span class="pm-artist">Claude Monet</span><span class="pm-title">Ninfee (Orangerie)</span><span class="pm-year">c. 1914–1926</span></div>
     </div>
-    <div class="photo-item" data-index="97">
+    <div class="photo-item" data-index="97" data-artist="Pablo Picasso" data-title="Nudo su fondo rosso" data-year="1906">
       <img src="photos/97_photo_1a5833674a4942788d70933aa35ce102.jpg" alt="Foto 97 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 97)">
       <div class="photo-num">97</div>
+      <div class="photo-meta"><span class="pm-artist">Pablo Picasso</span><span class="pm-title">Nudo su fondo rosso</span><span class="pm-year">1906</span></div>
     </div>
-    <div class="photo-item" data-index="98">
+    <div class="photo-item" data-index="98" data-artist="—" data-title="Statua del dio Amon che protegge Tutankhamon" data-year="c. 1336–1327 a.C.">
       <img src="photos/98_photo_1ce0ec63da19466f83a6c43131cf760e.jpg" alt="Foto 98 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 98)">
       <div class="photo-num">98</div>
+      <div class="photo-meta"><span class="pm-title">Statua del dio Amon che protegge Tutankhamon</span><span class="pm-year">c. 1336–1327 a.C.</span></div>
     </div>
-    <div class="photo-item" data-index="99">
+    <div class="photo-item" data-index="99" data-artist="Pablo Picasso" data-title="Nudo disteso e uomo con chitarra" data-year="1970">
       <img src="photos/99_photo_1d27cbad291a4bf29abe6909d214572d.jpg" alt="Foto 99 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 99)">
       <div class="photo-num">99</div>
+      <div class="photo-meta"><span class="pm-artist">Pablo Picasso</span><span class="pm-title">Nudo disteso e uomo con chitarra</span><span class="pm-year">1970</span></div>
     </div>
-    <div class="photo-item" data-index="100">
+    <div class="photo-item" data-index="100" data-artist="Agasias di Efeso" data-title="Gladiatore Borghese" data-year="c. 100 a.C.">
       <img src="photos/100_photo_1ff6b5e6ccd34c89899540c04330b314.jpg" alt="Foto 100 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 100)">
       <div class="photo-num">100</div>
+      <div class="photo-meta"><span class="pm-artist">Agasias di Efeso</span><span class="pm-title">Gladiatore Borghese</span><span class="pm-year">c. 100 a.C.</span></div>
     </div>
-    <div class="photo-item" data-index="101">
+    <div class="photo-item" data-index="101" data-artist="—" data-title="Afrodite 'Venus Vulgaris' (scultura romana)" data-year="II sec. d.C.">
       <img src="photos/101_photo_22bcd1bfa8ad47a5a732576fd37050c5.jpg" alt="Foto 101 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 101)">
       <div class="photo-num">101</div>
+      <div class="photo-meta"><span class="pm-title">Afrodite 'Venus Vulgaris' (scultura romana)</span><span class="pm-year">II sec. d.C.</span></div>
     </div>
-    <div class="photo-item" data-index="102">
+    <div class="photo-item" data-index="102" data-artist="—" data-title="Venere con Cupido (scultura romana)" data-year="c. I–II sec. d.C.">
       <img src="photos/102_photo_288208fe98f0441bafed13fbc3cb8976.jpg" alt="Foto 102 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 102)">
       <div class="photo-num">102</div>
+      <div class="photo-meta"><span class="pm-title">Venere con Cupido (scultura romana)</span><span class="pm-year">c. I–II sec. d.C.</span></div>
     </div>
-    <div class="photo-item" data-index="103">
+    <div class="photo-item" data-index="103" data-artist="—" data-title="Sarcofago degli Sposi (etrusco)" data-year="c. 520–510 a.C.">
       <img src="photos/103_photo_2d68182fc84f40b79ef7083c045972ca.jpg" alt="Foto 103 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 103)">
       <div class="photo-num">103</div>
+      <div class="photo-meta"><span class="pm-title">Sarcofago degli Sposi (etrusco)</span><span class="pm-year">c. 520–510 a.C.</span></div>
     </div>
-    <div class="photo-item" data-index="104">
+    <div class="photo-item" data-index="104" data-artist="—" data-title="Le Tre Grazie (scultura romana)" data-year="II sec. d.C.">
       <img src="photos/104_photo_2e518b623d614aa9922f7c69115c7e3d.jpg" alt="Foto 104 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 104)">
       <div class="photo-num">104</div>
+      <div class="photo-meta"><span class="pm-title">Le Tre Grazie (scultura romana)</span><span class="pm-year">II sec. d.C.</span></div>
     </div>
-    <div class="photo-item" data-index="105">
+    <div class="photo-item" data-index="105" data-artist="Boeto di Calcedonia" data-title="Bambino con l'oca" data-year="c. II sec. a.C.">
       <img src="photos/105_photo_30db1a6d691249ee802ac66c9644be26.jpg" alt="Foto 105 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 105)">
       <div class="photo-num">105</div>
+      <div class="photo-meta"><span class="pm-artist">Boeto di Calcedonia</span><span class="pm-title">Bambino con l'oca</span><span class="pm-year">c. II sec. a.C.</span></div>
     </div>
-    <div class="photo-item" data-index="106">
+    <div class="photo-item" data-index="106" data-artist="—" data-title="Cincinato (copia romana)" data-year="c. I–II sec. d.C.">
       <img src="photos/106_photo_328af07ec0ab43e08e5a1f70965da64f.jpg" alt="Foto 106 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 106)">
       <div class="photo-num">106</div>
+      <div class="photo-meta"><span class="pm-title">Cincinato (copia romana)</span><span class="pm-year">c. I–II sec. d.C.</span></div>
     </div>
-    <div class="photo-item" data-index="107">
+    <div class="photo-item" data-index="107" data-artist="Pablo Picasso" data-title="Donna distesa" data-year="c. 1932">
       <img src="photos/107_photo_341349d34cd84798947cb13d99fc3c8b.jpg" alt="Foto 107 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 107)">
       <div class="photo-num">107</div>
+      <div class="photo-meta"><span class="pm-artist">Pablo Picasso</span><span class="pm-title">Donna distesa</span><span class="pm-year">c. 1932</span></div>
     </div>
-    <div class="photo-item" data-index="108">
+    <div class="photo-item" data-index="108" data-artist="—" data-title="Sarcofago dorato (antico egizio)" data-year="c. 300–30 a.C.">
       <img src="photos/108_photo_3520d3ddfebe47f7bbb3fe7373e7f0b3.jpg" alt="Foto 108 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 108)">
       <div class="photo-num">108</div>
+      <div class="photo-meta"><span class="pm-title">Sarcofago dorato (antico egizio)</span><span class="pm-year">c. 300–30 a.C.</span></div>
     </div>
-    <div class="photo-item" data-index="109">
+    <div class="photo-item" data-index="109" data-artist="—" data-title="Fauno danzante (copia romana)" data-year="c. II sec. d.C.">
       <img src="photos/109_photo_3711294d3dd4420b99558b96523b9aa5.jpg" alt="Foto 109 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 109)">
       <div class="photo-num">109</div>
+      <div class="photo-meta"><span class="pm-title">Fauno danzante (copia romana)</span><span class="pm-year">c. II sec. d.C.</span></div>
     </div>
-    <div class="photo-item" data-index="110">
+    <div class="photo-item" data-index="110" data-artist="Tiziano Vecellio" data-title="Ritratto di Francesco I" data-year="1539">
       <img src="photos/110_photo_376d683de508472f97f9ec4165c6f4ef.jpg" alt="Foto 110 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 110)">
       <div class="photo-num">110</div>
+      <div class="photo-meta"><span class="pm-artist">Tiziano Vecellio</span><span class="pm-title">Ritratto di Francesco I</span><span class="pm-year">1539</span></div>
     </div>
-    <div class="photo-item" data-index="111">
+    <div class="photo-item" data-index="111" data-artist="André Derain" data-title="Arlecchino con chitarra" data-year="c. 1924">
       <img src="photos/111_photo_38115d2f81f04d88a7df5f61a6aed19b.jpg" alt="Foto 111 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 111)">
       <div class="photo-num">111</div>
+      <div class="photo-meta"><span class="pm-artist">André Derain</span><span class="pm-title">Arlecchino con chitarra</span><span class="pm-year">c. 1924</span></div>
     </div>
-    <div class="photo-item" data-index="112">
+    <div class="photo-item" data-index="112" data-artist="Anthony van Dyck" data-title="Venere nella fucina di Vulcano" data-year="c. 1630–1632">
       <img src="photos/112_photo_382b0615814d4c56b8bc86db854e78ed.jpg" alt="Foto 112 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 112)">
       <div class="photo-num">112</div>
+      <div class="photo-meta"><span class="pm-artist">Anthony van Dyck</span><span class="pm-title">Venere nella fucina di Vulcano</span><span class="pm-year">c. 1630–1632</span></div>
     </div>
-    <div class="photo-item" data-index="113">
+    <div class="photo-item" data-index="113" data-artist="Michelangelo Buonarroti" data-title="Schiavo morente" data-year="1513–1516">
       <img src="photos/113_photo_384541b623b44fe980af0fbbb1f641cc.jpg" alt="Foto 113 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 113)">
       <div class="photo-num">113</div>
+      <div class="photo-meta"><span class="pm-artist">Michelangelo Buonarroti</span><span class="pm-title">Schiavo morente</span><span class="pm-year">1513–1516</span></div>
     </div>
-    <div class="photo-item" data-index="114">
+    <div class="photo-item" data-index="114" data-artist="Eugène-Louis Lequesne" data-title="Fauno danzante (bronzo)" data-year="1850">
       <img src="photos/114_photo_39a166b8c8f44704ad1e7c11f04f581b.jpg" alt="Foto 114 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 114)">
       <div class="photo-num">114</div>
+      <div class="photo-meta"><span class="pm-artist">Eugène-Louis Lequesne</span><span class="pm-title">Fauno danzante (bronzo)</span><span class="pm-year">1850</span></div>
     </div>
-    <div class="photo-item" data-index="115">
+    <div class="photo-item" data-index="115" data-artist="—" data-title="Stampa 'ANNA' (autore ignoto)" data-year="—">
       <img src="photos/115_photo_3b6456aba0d945279a6e029ea5d593d6.jpg" alt="Foto 115 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 115)">
       <div class="photo-num">115</div>
+      <div class="photo-meta"><span class="pm-title">Stampa 'ANNA' (autore ignoto)</span><span class="pm-year">—</span></div>
     </div>
-    <div class="photo-item" data-index="116">
+    <div class="photo-item" data-index="116" data-artist="—" data-title="Effigi funerarie medievali (sculture)" data-year="—">
       <img src="photos/116_photo_3c18b1643b5447e08d63ae85bd52f082.jpg" alt="Foto 116 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 116)">
       <div class="photo-num">116</div>
+      <div class="photo-meta"><span class="pm-title">Effigi funerarie medievali (sculture)</span><span class="pm-year">—</span></div>
     </div>
-    <div class="photo-item" data-index="117">
+    <div class="photo-item" data-index="117" data-artist="—" data-title="Pallade di Velletri (copia romana)" data-year="c. II sec. d.C.">
       <img src="photos/117_photo_3db396f8c033451cbb91f23bc32fc573.jpg" alt="Foto 117 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 117)">
       <div class="photo-num">117</div>
+      <div class="photo-meta"><span class="pm-title">Pallade di Velletri (copia romana)</span><span class="pm-year">c. II sec. d.C.</span></div>
     </div>
-    <div class="photo-item" data-index="118">
+    <div class="photo-item" data-index="118" data-artist="Anthony van Dyck" data-title="Ritratto di James Stuart, duca di Richmond" data-year="c. 1637">
       <img src="photos/118_photo_3f70d2f195974785aa5d1a4dbf0b925b.jpg" alt="Foto 118 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 118)">
       <div class="photo-num">118</div>
+      <div class="photo-meta"><span class="pm-artist">Anthony van Dyck</span><span class="pm-title">Ritratto di James Stuart, duca di Richmond</span><span class="pm-year">c. 1637</span></div>
     </div>
-    <div class="photo-item" data-index="119">
+    <div class="photo-item" data-index="119" data-artist="—" data-title="Sileno con il giovane Dioniso (scultura romana)" data-year="c. II sec. d.C.">
       <img src="photos/119_photo_41f591688383431c8e9d5375517bc1b5.jpg" alt="Foto 119 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 119)">
       <div class="photo-num">119</div>
+      <div class="photo-meta"><span class="pm-title">Sileno con il giovane Dioniso (scultura romana)</span><span class="pm-year">c. II sec. d.C.</span></div>
     </div>
-    <div class="photo-item" data-index="120">
+    <div class="photo-item" data-index="120" data-artist="Maurice Utrillo" data-title="Il Municipio con bandiera" data-year="c. 1924">
       <img src="photos/120_photo_42949cee37834dde854f814d443c4030.jpg" alt="Foto 120 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 120)">
       <div class="photo-num">120</div>
+      <div class="photo-meta"><span class="pm-artist">Maurice Utrillo</span><span class="pm-title">Il Municipio con bandiera</span><span class="pm-year">c. 1924</span></div>
     </div>
-    <div class="photo-item" data-index="121">
+    <div class="photo-item" data-index="121" data-artist="—" data-title="Frammento di statua reale del periodo di Amarna" data-year="c. 1353–1336 a.C.">
       <img src="photos/121_photo_42abeaf7fb524806908837701c08e73a.jpg" alt="Foto 121 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 121)">
       <div class="photo-num">121</div>
+      <div class="photo-meta"><span class="pm-title">Frammento di statua reale del periodo di Amarna</span><span class="pm-year">c. 1353–1336 a.C.</span></div>
     </div>
-    <div class="photo-item" data-index="122">
+    <div class="photo-item" data-index="122" data-artist="—" data-title="Stele funeraria egizia (geroglifici)" data-year="c. 2000–1700 a.C.">
       <img src="photos/122_photo_45a83162d2794ba28d87a473555bf2f7.jpg" alt="Foto 122 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 122)">
       <div class="photo-num">122</div>
+      <div class="photo-meta"><span class="pm-title">Stele funeraria egizia (geroglifici)</span><span class="pm-year">c. 2000–1700 a.C.</span></div>
     </div>
-    <div class="photo-item" data-index="123">
+    <div class="photo-item" data-index="123" data-artist="—" data-title="Sarcofago etrusco con figura distesa" data-year="c. II sec. a.C.">
       <img src="photos/123_photo_46cac993f20a4957a78fb9b9794cf8b5.jpg" alt="Foto 123 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 123)">
       <div class="photo-num">123</div>
+      <div class="photo-meta"><span class="pm-title">Sarcofago etrusco con figura distesa</span><span class="pm-year">c. II sec. a.C.</span></div>
     </div>
-    <div class="photo-item" data-index="124">
+    <div class="photo-item" data-index="124" data-artist="Pablo Picasso" data-title="Grande nudo con drappo" data-year="1921–1923">
       <img src="photos/124_photo_47ca6d8ae5764cc88eef6b954f559054.jpg" alt="Foto 124 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 124)">
       <div class="photo-num">124</div>
+      <div class="photo-meta"><span class="pm-artist">Pablo Picasso</span><span class="pm-title">Grande nudo con drappo</span><span class="pm-year">1921–1923</span></div>
     </div>
-    <div class="photo-item" data-index="125">
+    <div class="photo-item" data-index="125" data-artist="Giuseppe Sanmartino" data-title="Due angioletti con torcia" data-year="c. 1768">
       <img src="photos/125_photo_48add524b89f461cb59b34a770bbc7aa.jpg" alt="Foto 125 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 125)">
       <div class="photo-num">125</div>
+      <div class="photo-meta"><span class="pm-artist">Giuseppe Sanmartino</span><span class="pm-title">Due angioletti con torcia</span><span class="pm-year">c. 1768</span></div>
     </div>
-    <div class="photo-item" data-index="126">
+    <div class="photo-item" data-index="126" data-artist="—" data-title="Stele funeraria egizia con geroglifici" data-year="c. 1295–1069 a.C.">
       <img src="photos/126_photo_4953306a6f0d435ebc6a066a5d33a983.jpg" alt="Foto 126 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 126)">
       <div class="photo-num">126</div>
+      <div class="photo-meta"><span class="pm-title">Stele funeraria egizia con geroglifici</span><span class="pm-year">c. 1295–1069 a.C.</span></div>
     </div>
-    <div class="photo-item" data-index="127">
+    <div class="photo-item" data-index="127" data-artist="Henri Matisse" data-title="Odalisca (in piedi)" data-year="c. 1923">
       <img src="photos/127_photo_49f506dd2448400eb3b00b5527973810.jpg" alt="Foto 127 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 127)">
       <div class="photo-num">127</div>
+      <div class="photo-meta"><span class="pm-artist">Henri Matisse</span><span class="pm-title">Odalisca (in piedi)</span><span class="pm-year">c. 1923</span></div>
     </div>
-    <div class="photo-item" data-index="128">
+    <div class="photo-item" data-index="128" data-artist="Pietro Perugino" data-title="Vergine col Bambino tra S. Giovanni Battista e S. Caterina" data-year="c. 1500">
       <img src="photos/128_photo_4fc2bbf632ae46da927bc7bf669c2a82.jpg" alt="Foto 128 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 128)">
       <div class="photo-num">128</div>
+      <div class="photo-meta"><span class="pm-artist">Pietro Perugino</span><span class="pm-title">Vergine col Bambino tra S. Giovanni Battista e S. Caterina</span><span class="pm-year">c. 1500</span></div>
     </div>
-    <div class="photo-item" data-index="129">
+    <div class="photo-item" data-index="129" data-artist="Pablo Picasso" data-title="La Nuotatrice" data-year="1929">
       <img src="photos/129_photo_55b0fe5642d94319a53f31dac9c095b1.jpg" alt="Foto 129 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 129)">
       <div class="photo-num">129</div>
+      <div class="photo-meta"><span class="pm-artist">Pablo Picasso</span><span class="pm-title">La Nuotatrice</span><span class="pm-year">1929</span></div>
     </div>
-    <div class="photo-item" data-index="130">
+    <div class="photo-item" data-index="130" data-artist="Peter Paul Rubens" data-title="Hélène Fourment in carrozza" data-year="c. 1639">
       <img src="photos/130_photo_56b3643531864ce6b1061d519ef80d62.jpg" alt="Foto 130 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 130)">
       <div class="photo-num">130</div>
+      <div class="photo-meta"><span class="pm-artist">Peter Paul Rubens</span><span class="pm-title">Hélène Fourment in carrozza</span><span class="pm-year">c. 1639</span></div>
     </div>
-    <div class="photo-item" data-index="131">
+    <div class="photo-item" data-index="131" data-artist="Pablo Picasso" data-title="Giovane ragazza seduta" data-year="1970">
       <img src="photos/131_photo_5a1d6d003e8d4364af252e22405d7e13.jpg" alt="Foto 131 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 131)">
       <div class="photo-num">131</div>
+      <div class="photo-meta"><span class="pm-artist">Pablo Picasso</span><span class="pm-title">Giovane ragazza seduta</span><span class="pm-year">1970</span></div>
     </div>
-    <div class="photo-item" data-index="132">
+    <div class="photo-item" data-index="132" data-artist="—" data-title="Statua femminile panneggiata (copia romana)" data-year="c. I–II sec. d.C.">
       <img src="photos/132_photo_5ad82fc22c274cbe85adf7a8ce769851.jpg" alt="Foto 132 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 132)">
       <div class="photo-num">132</div>
+      <div class="photo-meta"><span class="pm-title">Statua femminile panneggiata (copia romana)</span><span class="pm-year">c. I–II sec. d.C.</span></div>
     </div>
-    <div class="photo-item" data-index="133">
+    <div class="photo-item" data-index="133" data-artist="Pablo Picasso" data-title="Il Bacio (Le Baiser)" data-year="1969">
       <img src="photos/133_photo_61c4185f13d64041bb1fd73bfbf4737e.jpg" alt="Foto 133 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 133)">
       <div class="photo-num">133</div>
+      <div class="photo-meta"><span class="pm-artist">Pablo Picasso</span><span class="pm-title">Il Bacio (Le Baiser)</span><span class="pm-year">1969</span></div>
     </div>
-    <div class="photo-item" data-index="134">
+    <div class="photo-item" data-index="134" data-artist="Amedeo Modigliani" data-title="Paul Guillaume, Novo Pilota" data-year="1915">
       <img src="photos/134_photo_64b59c80111c406f8708a6a2e97c3aa9.jpg" alt="Foto 134 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 134)">
       <div class="photo-num">134</div>
+      <div class="photo-meta"><span class="pm-artist">Amedeo Modigliani</span><span class="pm-title">Paul Guillaume, Novo Pilota</span><span class="pm-year">1915</span></div>
     </div>
-    <div class="photo-item" data-index="135">
+    <div class="photo-item" data-index="135" data-artist="—" data-title="Re che offre al dio falco Horus (scultura egizia)" data-year="c. 664–332 a.C.">
       <img src="photos/135_photo_68cce68231244281b838e586fe50f74e.jpg" alt="Foto 135 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 135)">
       <div class="photo-num">135</div>
+      <div class="photo-meta"><span class="pm-title">Re che offre al dio falco Horus (scultura egizia)</span><span class="pm-year">c. 664–332 a.C.</span></div>
     </div>
-    <div class="photo-item" data-index="136">
+    <div class="photo-item" data-index="136" data-artist="Chaïm Soutine" data-title="Tacchino appeso (Le Dindon)" data-year="c. 1925">
       <img src="photos/136_photo_6965767296674d36ab4a79a1c7d95e61.jpg" alt="Foto 136 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 136)">
       <div class="photo-num">136</div>
+      <div class="photo-meta"><span class="pm-artist">Chaïm Soutine</span><span class="pm-title">Tacchino appeso (Le Dindon)</span><span class="pm-year">c. 1925</span></div>
     </div>
-    <div class="photo-item" data-index="137">
+    <div class="photo-item" data-index="137" data-artist="—" data-title="Statua di giovane (copia romana)" data-year="c. I–II sec. d.C.">
       <img src="photos/137_photo_69c9b7458d3e41569b218fc6b2d467e1.jpg" alt="Foto 137 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 137)">
       <div class="photo-num">137</div>
+      <div class="photo-meta"><span class="pm-title">Statua di giovane (copia romana)</span><span class="pm-year">c. I–II sec. d.C.</span></div>
     </div>
-    <div class="photo-item" data-index="138">
+    <div class="photo-item" data-index="138" data-artist="Pablo Picasso" data-title="Poesia 'alrededor del pozo'" data-year="1936">
       <img src="photos/138_photo_6ae6a2642a17449c9ac05182f09bf243.jpg" alt="Foto 138 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 138)">
       <div class="photo-num">138</div>
+      <div class="photo-meta"><span class="pm-artist">Pablo Picasso</span><span class="pm-title">Poesia 'alrededor del pozo'</span><span class="pm-year">1936</span></div>
     </div>
-    <div class="photo-item" data-index="139">
+    <div class="photo-item" data-index="139" data-artist="—" data-title="Adorazione dei Pastori (scuola fiamminga)" data-year="c. XVI sec.">
       <img src="photos/139_photo_6c4d54c949f74294bd1ee2c10c41c4ee.jpg" alt="Foto 139 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 139)">
       <div class="photo-num">139</div>
+      <div class="photo-meta"><span class="pm-title">Adorazione dei Pastori (scuola fiamminga)</span><span class="pm-year">c. XVI sec.</span></div>
     </div>
-    <div class="photo-item" data-index="140">
+    <div class="photo-item" data-index="140" data-artist="—" data-title="Stele funeraria attica (scultura greca)" data-year="c. IV sec. a.C.">
       <img src="photos/140_photo_6c5bd67683bd4c45a532484529bbf4be.jpg" alt="Foto 140 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 140)">
       <div class="photo-num">140</div>
+      <div class="photo-meta"><span class="pm-title">Stele funeraria attica (scultura greca)</span><span class="pm-year">c. IV sec. a.C.</span></div>
     </div>
-    <div class="photo-item" data-index="141">
+    <div class="photo-item" data-index="141" data-artist="—" data-title="Sarcofago / urna cineraria etrusca" data-year="c. II sec. a.C.">
       <img src="photos/141_photo_6e482f82d9064cb29d9f221e488ac08c.jpg" alt="Foto 141 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 141)">
       <div class="photo-num">141</div>
+      <div class="photo-meta"><span class="pm-title">Sarcofago / urna cineraria etrusca</span><span class="pm-year">c. II sec. a.C.</span></div>
     </div>
-    <div class="photo-item" data-index="142">
+    <div class="photo-item" data-index="142" data-artist="—" data-title="Pallade di Velletri (copia romana)" data-year="c. II sec. d.C.">
       <img src="photos/142_photo_70f68a6bd69046b88a5b22d4972acf14.jpg" alt="Foto 142 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 142)">
       <div class="photo-num">142</div>
+      <div class="photo-meta"><span class="pm-title">Pallade di Velletri (copia romana)</span><span class="pm-year">c. II sec. d.C.</span></div>
     </div>
-    <div class="photo-item" data-index="143">
+    <div class="photo-item" data-index="143" data-artist="—" data-title="Vittoria Alata di Samotracia" data-year="c. 200–190 a.C.">
       <img src="photos/143_photo_73002613634e40e6a07aa7cf56cfa739.jpg" alt="Foto 143 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 143)">
       <div class="photo-num">143</div>
+      <div class="photo-meta"><span class="pm-title">Vittoria Alata di Samotracia</span><span class="pm-year">c. 200–190 a.C.</span></div>
     </div>
-    <div class="photo-item" data-index="144">
+    <div class="photo-item" data-index="144" data-artist="Michelangelo Buonarroti" data-title="Schiavo ribelle" data-year="c. 1513–1515">
       <img src="photos/144_photo_76eb1a620b3e4de3b1c1107737ab39ef.jpg" alt="Foto 144 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 144)">
       <div class="photo-num">144</div>
+      <div class="photo-meta"><span class="pm-artist">Michelangelo Buonarroti</span><span class="pm-title">Schiavo ribelle</span><span class="pm-year">c. 1513–1515</span></div>
     </div>
-    <div class="photo-item" data-index="145">
+    <div class="photo-item" data-index="145" data-artist="André Derain" data-title="Nudo seduto" data-year="c. 1923">
       <img src="photos/145_photo_780ddaf367b4498ebf5c49f665ddd122.jpg" alt="Foto 145 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 145)">
       <div class="photo-num">145</div>
+      <div class="photo-meta"><span class="pm-artist">André Derain</span><span class="pm-title">Nudo seduto</span><span class="pm-year">c. 1923</span></div>
     </div>
-    <div class="photo-item" data-index="146">
+    <div class="photo-item" data-index="146" data-artist="Pablo Picasso" data-title="Ritratto di Marie-Thérèse" data-year="1937">
       <img src="photos/146_photo_7a5f6b33973c43e6823d237c008399d7.jpg" alt="Foto 146 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 146)">
       <div class="photo-num">146</div>
+      <div class="photo-meta"><span class="pm-artist">Pablo Picasso</span><span class="pm-title">Ritratto di Marie-Thérèse</span><span class="pm-year">1937</span></div>
     </div>
-    <div class="photo-item" data-index="147">
+    <div class="photo-item" data-index="147" data-artist="—" data-title="Statuette di legno di servitori reali (egizio)" data-year="c. 1400–1300 a.C.">
       <img src="photos/147_photo_7c90d2061a18420f8ef7b8753991270c.jpg" alt="Foto 147 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 147)">
       <div class="photo-num">147</div>
+      <div class="photo-meta"><span class="pm-title">Statuette di legno di servitori reali (egizio)</span><span class="pm-year">c. 1400–1300 a.C.</span></div>
     </div>
-    <div class="photo-item" data-index="148">
+    <div class="photo-item" data-index="148" data-artist="—" data-title="Testa/busto egizio (scultura)" data-year="—">
       <img src="photos/148_photo_875ef65cb30447d7b230f948675f73cb.jpg" alt="Foto 148 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 148)">
       <div class="photo-num">148</div>
+      <div class="photo-meta"><span class="pm-title">Testa/busto egizio (scultura)</span><span class="pm-year">—</span></div>
     </div>
-    <div class="photo-item" data-index="149">
+    <div class="photo-item" data-index="149" data-artist="—" data-title="Centauro cavalcato da Eros (scultura romana)" data-year="c. II sec. d.C.">
       <img src="photos/149_photo_8ed214f1c4384fa8af96282336621682.jpg" alt="Foto 149 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 149)">
       <div class="photo-num">149</div>
+      <div class="photo-meta"><span class="pm-title">Centauro cavalcato da Eros (scultura romana)</span><span class="pm-year">c. II sec. d.C.</span></div>
     </div>
-    <div class="photo-item" data-index="150">
+    <div class="photo-item" data-index="150" data-artist="Pablo Picasso" data-title="Donna in bianco" data-year="1923">
       <img src="photos/150_photo_8fd23fd9566a42da9366948c7dac61a4.jpg" alt="Foto 150 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 150)">
       <div class="photo-num">150</div>
+      <div class="photo-meta"><span class="pm-artist">Pablo Picasso</span><span class="pm-title">Donna in bianco</span><span class="pm-year">1923</span></div>
     </div>
-    <div class="photo-item" data-index="151">
+    <div class="photo-item" data-index="151" data-artist="Carle van Loo" data-title="L'Annunciazione" data-year="c. 1750s">
       <img src="photos/151_photo_8fdfedc877a94915acf0a4d9ed216f76.jpg" alt="Foto 151 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 151)">
       <div class="photo-num">151</div>
+      <div class="photo-meta"><span class="pm-artist">Carle van Loo</span><span class="pm-title">L'Annunciazione</span><span class="pm-year">c. 1750s</span></div>
     </div>
-    <div class="photo-item" data-index="152">
+    <div class="photo-item" data-index="152" data-artist="Pablo Picasso" data-title="Le Nozze (Les Mariés)" data-year="1971">
       <img src="photos/152_photo_9257134af47547a9a6cd93e91bb3e01d.jpg" alt="Foto 152 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 152)">
       <div class="photo-num">152</div>
+      <div class="photo-meta"><span class="pm-artist">Pablo Picasso</span><span class="pm-title">Le Nozze (Les Mariés)</span><span class="pm-year">1971</span></div>
     </div>
-    <div class="photo-item" data-index="153">
+    <div class="photo-item" data-index="153" data-artist="—" data-title="Statua femminile acefala (scultura antica)" data-year="c. I–II sec. d.C.">
       <img src="photos/153_photo_9403c4c3db3d4edf9273cefc02508f07.jpg" alt="Foto 153 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 153)">
       <div class="photo-num">153</div>
+      <div class="photo-meta"><span class="pm-title">Statua femminile acefala (scultura antica)</span><span class="pm-year">c. I–II sec. d.C.</span></div>
     </div>
-    <div class="photo-item" data-index="154">
+    <div class="photo-item" data-index="154" data-artist="Amedeo Modigliani" data-title="Antonia" data-year="c. 1915">
       <img src="photos/154_photo_946049b51ad441e2b7d3137e40e3c3e5.jpg" alt="Foto 154 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 154)">
       <div class="photo-num">154</div>
+      <div class="photo-meta"><span class="pm-artist">Amedeo Modigliani</span><span class="pm-title">Antonia</span><span class="pm-year">c. 1915</span></div>
     </div>
-    <div class="photo-item" data-index="155">
+    <div class="photo-item" data-index="155" data-artist="Henri Matisse" data-title="Odalisca con pantaloni grigi" data-year="1927">
       <img src="photos/155_photo_9746a87fdbdc4a899c02179531edcddc.jpg" alt="Foto 155 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 155)">
       <div class="photo-num">155</div>
+      <div class="photo-meta"><span class="pm-artist">Henri Matisse</span><span class="pm-title">Odalisca con pantaloni grigi</span><span class="pm-year">1927</span></div>
     </div>
-    <div class="photo-item" data-index="156">
+    <div class="photo-item" data-index="156" data-artist="—" data-title="Grande Sfinge di Tanis (scultura egizia)" data-year="c. 2600 a.C.">
       <img src="photos/156_photo_97ccf530a218439ba7b9237bc9212df3.jpg" alt="Foto 156 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 156)">
       <div class="photo-num">156</div>
+      <div class="photo-meta"><span class="pm-title">Grande Sfinge di Tanis (scultura egizia)</span><span class="pm-year">c. 2600 a.C.</span></div>
     </div>
-    <div class="photo-item" data-index="157">
+    <div class="photo-item" data-index="157" data-artist="—" data-title="Statua di giovane dio/atleta (scultura romana)" data-year="—">
       <img src="photos/157_photo_9ace4c5d39734da89df2ef03810f2b18.jpg" alt="Foto 157 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 157)">
       <div class="photo-num">157</div>
+      <div class="photo-meta"><span class="pm-title">Statua di giovane dio/atleta (scultura romana)</span><span class="pm-year">—</span></div>
     </div>
-    <div class="photo-item" data-index="158">
+    <div class="photo-item" data-index="158" data-artist="Pablo Picasso" data-title="La Cucina (La Cuisine)" data-year="1948">
       <img src="photos/158_photo_a0937c835b4e4762951e5b506bc7b2a8.jpg" alt="Foto 158 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 158)">
       <div class="photo-num">158</div>
+      <div class="photo-meta"><span class="pm-artist">Pablo Picasso</span><span class="pm-title">La Cucina (La Cuisine)</span><span class="pm-year">1948</span></div>
     </div>
-    <div class="photo-item" data-index="159">
+    <div class="photo-item" data-index="159" data-artist="Pablo Picasso" data-title="Ritratto di Dora Maar (installazione sala)" data-year="c. 1937–1938">
       <img src="photos/159_photo_a5a5bbeb44d344648cda14360a47ca18.jpg" alt="Foto 159 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 159)">
       <div class="photo-num">159</div>
+      <div class="photo-meta"><span class="pm-artist">Pablo Picasso</span><span class="pm-title">Ritratto di Dora Maar (installazione sala)</span><span class="pm-year">c. 1937–1938</span></div>
     </div>
-    <div class="photo-item" data-index="160">
+    <div class="photo-item" data-index="160" data-artist="—" data-title="Oinochoai da Kalabak Tepe, Mileto (ceramiche greche)" data-year="c. 620–600 a.C.">
       <img src="photos/160_photo_a6e0df5b25074099a5ce073402f19b2d.jpg" alt="Foto 160 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 160)">
       <div class="photo-num">160</div>
+      <div class="photo-meta"><span class="pm-title">Oinochoai da Kalabak Tepe, Mileto (ceramiche greche)</span><span class="pm-year">c. 620–600 a.C.</span></div>
     </div>
-    <div class="photo-item" data-index="161">
+    <div class="photo-item" data-index="161" data-artist="Daniele da Volterra" data-title="Davide e Golia" data-year="c. 1555–1556">
       <img src="photos/161_photo_a8b6fc65860048d78708be2ac6922df2.jpg" alt="Foto 161 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 161)">
       <div class="photo-num">161</div>
+      <div class="photo-meta"><span class="pm-artist">Daniele da Volterra</span><span class="pm-title">Davide e Golia</span><span class="pm-year">c. 1555–1556</span></div>
     </div>
-    <div class="photo-item" data-index="162">
+    <div class="photo-item" data-index="162" data-artist="Pablo Picasso" data-title="Jacqueline con le mani conserte" data-year="1954">
       <img src="photos/162_photo_a92b4ac561ca41b198a1707d7a3eb25b.jpg" alt="Foto 162 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 162)">
       <div class="photo-num">162</div>
+      <div class="photo-meta"><span class="pm-artist">Pablo Picasso</span><span class="pm-title">Jacqueline con le mani conserte</span><span class="pm-year">1954</span></div>
     </div>
-    <div class="photo-item" data-index="163">
+    <div class="photo-item" data-index="163" data-artist="Peter Paul Rubens" data-title="Il Ratto delle figlie di Leucippo" data-year="c. 1618">
       <img src="photos/163_photo_a99512bbcb46400687bf0b888e8109a5.jpg" alt="Foto 163 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 163)">
       <div class="photo-num">163</div>
+      <div class="photo-meta"><span class="pm-artist">Peter Paul Rubens</span><span class="pm-title">Il Ratto delle figlie di Leucippo</span><span class="pm-year">c. 1618</span></div>
     </div>
-    <div class="photo-item" data-index="164">
+    <div class="photo-item" data-index="164" data-artist="—" data-title="Grande vaso di marmo (cratere) con figure" data-year="—">
       <img src="photos/164_photo_ab4c9c828c594dd1ad595b42089f4ab5.jpg" alt="Foto 164 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 164)">
       <div class="photo-num">164</div>
+      <div class="photo-meta"><span class="pm-title">Grande vaso di marmo (cratere) con figure</span><span class="pm-year">—</span></div>
     </div>
-    <div class="photo-item" data-index="165">
+    <div class="photo-item" data-index="165" data-artist="Antonello da Messina" data-title="Cristo alla colonna" data-year="c. 1476–1478">
       <img src="photos/165_photo_ae103bb391704de1837fe15f3b4590da.jpg" alt="Foto 165 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 165)">
       <div class="photo-num">165</div>
+      <div class="photo-meta"><span class="pm-artist">Antonello da Messina</span><span class="pm-title">Cristo alla colonna</span><span class="pm-year">c. 1476–1478</span></div>
     </div>
-    <div class="photo-item" data-index="166">
+    <div class="photo-item" data-index="166" data-artist="Tiziano Vecellio" data-title="La Deposizione di Cristo" data-year="c. 1520">
       <img src="photos/166_photo_b24fe032cd8a48c0ab275f1bb84111a0.jpg" alt="Foto 166 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 166)">
       <div class="photo-num">166</div>
+      <div class="photo-meta"><span class="pm-artist">Tiziano Vecellio</span><span class="pm-title">La Deposizione di Cristo</span><span class="pm-year">c. 1520</span></div>
     </div>
-    <div class="photo-item" data-index="167">
+    <div class="photo-item" data-index="167" data-artist="—" data-title="Iscrizioni cuneiformi (palazzo di Dario I, Susa)" data-year="c. 510 a.C.">
       <img src="photos/167_photo_b5b77cd5681c46088fd7b6155010b656.jpg" alt="Foto 167 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 167)">
       <div class="photo-num">167</div>
+      <div class="photo-meta"><span class="pm-title">Iscrizioni cuneiformi (palazzo di Dario I, Susa)</span><span class="pm-year">c. 510 a.C.</span></div>
     </div>
-    <div class="photo-item" data-index="168">
+    <div class="photo-item" data-index="168" data-artist="André Derain" data-title="La Tavola della cucina" data-year="c. 1924">
       <img src="photos/168_photo_b7ce028fd5394e3cb6cebf7a53e62a34.jpg" alt="Foto 168 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 168)">
       <div class="photo-num">168</div>
+      <div class="photo-meta"><span class="pm-artist">André Derain</span><span class="pm-title">La Tavola della cucina</span><span class="pm-year">c. 1924</span></div>
     </div>
-    <div class="photo-item" data-index="169">
+    <div class="photo-item" data-index="169" data-artist="Pablo Picasso" data-title="Figura (Donna in poltrona)" data-year="1927">
       <img src="photos/169_photo_b85cad10c8ce410faf5f49372a7f174f.jpg" alt="Foto 169 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 169)">
       <div class="photo-num">169</div>
+      <div class="photo-meta"><span class="pm-artist">Pablo Picasso</span><span class="pm-title">Figura (Donna in poltrona)</span><span class="pm-year">1927</span></div>
     </div>
-    <div class="photo-item" data-index="170">
+    <div class="photo-item" data-index="170" data-artist="—" data-title="Porte di marmo (antiche, romano)" data-year="—">
       <img src="photos/170_photo_b8acb2b3784c477898872227dd53f26f.jpg" alt="Foto 170 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 170)">
       <div class="photo-num">170</div>
+      <div class="photo-meta"><span class="pm-title">Porte di marmo (antiche, romano)</span><span class="pm-year">—</span></div>
     </div>
-    <div class="photo-item" data-index="171">
+    <div class="photo-item" data-index="171" data-artist="—" data-title="Lo Scriba accovacciato (scultura egizia)" data-year="c. 2600–2350 a.C.">
       <img src="photos/171_photo_b8ceec209734438abaa6a5df574f63a1.jpg" alt="Foto 171 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 171)">
       <div class="photo-num">171</div>
+      <div class="photo-meta"><span class="pm-title">Lo Scriba accovacciato (scultura egizia)</span><span class="pm-year">c. 2600–2350 a.C.</span></div>
     </div>
-    <div class="photo-item" data-index="172">
+    <div class="photo-item" data-index="172" data-artist="—" data-title="Statua di Diana cacciatrice (copia romana)" data-year="c. I–II sec. d.C.">
       <img src="photos/172_photo_b92b8edc6a9c4a78a9ad2624e1bbc499.jpg" alt="Foto 172 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 172)">
       <div class="photo-num">172</div>
+      <div class="photo-meta"><span class="pm-title">Statua di Diana cacciatrice (copia romana)</span><span class="pm-year">c. I–II sec. d.C.</span></div>
     </div>
-    <div class="photo-item" data-index="173">
+    <div class="photo-item" data-index="173" data-artist="—" data-title="Regina Tiye accanto ad Amenhotep III (egizio)" data-year="c. 1391–1353 a.C.">
       <img src="photos/173_photo_bb38524570f7491ab41ca64da114c8ce.jpg" alt="Foto 173 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 173)">
       <div class="photo-num">173</div>
+      <div class="photo-meta"><span class="pm-title">Regina Tiye accanto ad Amenhotep III (egizio)</span><span class="pm-year">c. 1391–1353 a.C.</span></div>
     </div>
-    <div class="photo-item" data-index="174">
+    <div class="photo-item" data-index="174" data-artist="Anthony van Dyck" data-title="San Sebastiano curato dagli angeli" data-year="c. 1630">
       <img src="photos/174_photo_bbc225090a2149e7a12b6cf5946271da.jpg" alt="Foto 174 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 174)">
       <div class="photo-num">174</div>
+      <div class="photo-meta"><span class="pm-artist">Anthony van Dyck</span><span class="pm-title">San Sebastiano curato dagli angeli</span><span class="pm-year">c. 1630</span></div>
     </div>
-    <div class="photo-item" data-index="175">
+    <div class="photo-item" data-index="175" data-artist="—" data-title="Codice di Hammurabi (stele babilonese)" data-year="c. 1754 a.C.">
       <img src="photos/175_photo_bc657397c126419482e7aa02cf6fc6fd.jpg" alt="Foto 175 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 175)">
       <div class="photo-num">175</div>
+      <div class="photo-meta"><span class="pm-title">Codice di Hammurabi (stele babilonese)</span><span class="pm-year">c. 1754 a.C.</span></div>
     </div>
-    <div class="photo-item" data-index="176">
+    <div class="photo-item" data-index="176" data-artist="Amedeo Modigliani" data-title="Il Giovane apprendista" data-year="1918–1919">
       <img src="photos/176_photo_bd185282be65479984fb5a49dc8ef340.jpg" alt="Foto 176 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 176)">
       <div class="photo-num">176</div>
+      <div class="photo-meta"><span class="pm-artist">Amedeo Modigliani</span><span class="pm-title">Il Giovane apprendista</span><span class="pm-year">1918–1919</span></div>
     </div>
-    <div class="photo-item" data-index="177">
+    <div class="photo-item" data-index="177" data-artist="Pablo Picasso" data-title="Ritratto di Olga in poltrona" data-year="1918">
       <img src="photos/177_photo_c39a85497faf49a9a77acd4af542881f.jpg" alt="Foto 177 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 177)">
       <div class="photo-num">177</div>
+      <div class="photo-meta"><span class="pm-artist">Pablo Picasso</span><span class="pm-title">Ritratto di Olga in poltrona</span><span class="pm-year">1918</span></div>
     </div>
-    <div class="photo-item" data-index="178">
+    <div class="photo-item" data-index="178" data-artist="Peter Paul Rubens" data-title="Hélène Fourment con due figli" data-year="c. 1636–1637">
       <img src="photos/178_photo_c477b136f1a84da591639eb3fb332c5b.jpg" alt="Foto 178 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 178)">
       <div class="photo-num">178</div>
+      <div class="photo-meta"><span class="pm-artist">Peter Paul Rubens</span><span class="pm-title">Hélène Fourment con due figli</span><span class="pm-year">c. 1636–1637</span></div>
     </div>
-    <div class="photo-item" data-index="179">
+    <div class="photo-item" data-index="179" data-artist="—" data-title="Ushabti funerario (antico egizio)" data-year="c. 1300–1100 a.C.">
       <img src="photos/179_photo_c68b96c0ec0c4c51bc7975bd07d7b3af.jpg" alt="Foto 179 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 179)">
       <div class="photo-num">179</div>
+      <div class="photo-meta"><span class="pm-title">Ushabti funerario (antico egizio)</span><span class="pm-year">c. 1300–1100 a.C.</span></div>
     </div>
-    <div class="photo-item" data-index="180">
+    <div class="photo-item" data-index="180" data-artist="Claude Monet" data-title="Le Ninfee · Orangerie" data-year="1914–1926">
       <img src="photos/180_photo_c6e8450629cb4f5e99a94f9cd33d270a.jpg" alt="Foto 180 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 180)">
       <div class="photo-num">180</div>
+      <div class="photo-meta"><span class="pm-artist">Claude Monet</span><span class="pm-title">Le Ninfee · Orangerie</span><span class="pm-year">1914–1926</span></div>
     </div>
-    <div class="photo-item" data-index="181">
+    <div class="photo-item" data-index="181" data-artist="Henri Matisse" data-title="Le Tre Sorelle" data-year="1917">
       <img src="photos/181_photo_c78b3980ef86447e9c582ea2df62e674.jpg" alt="Foto 181 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 181)">
       <div class="photo-num">181</div>
+      <div class="photo-meta"><span class="pm-artist">Henri Matisse</span><span class="pm-title">Le Tre Sorelle</span><span class="pm-year">1917</span></div>
     </div>
-    <div class="photo-item" data-index="182">
+    <div class="photo-item" data-index="182" data-artist="—" data-title="Lapide commemorativa di René Descartes" data-year="—">
       <img src="photos/182_photo_cb012f80f80f4f33b881eebd70e51e7c.jpg" alt="Foto 182 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 182)">
       <div class="photo-num">182</div>
+      <div class="photo-meta"><span class="pm-title">Lapide commemorativa di René Descartes</span><span class="pm-year">—</span></div>
     </div>
-    <div class="photo-item" data-index="183">
+    <div class="photo-item" data-index="183" data-artist="Henri Rousseau" data-title="Il Matrimonio (La Noce)" data-year="1905">
       <img src="photos/183_photo_cbb6d662a5cc4fb7bc740608ed1628ea.jpg" alt="Foto 183 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 183)">
       <div class="photo-num">183</div>
+      <div class="photo-meta"><span class="pm-artist">Henri Rousseau</span><span class="pm-title">Il Matrimonio (La Noce)</span><span class="pm-year">1905</span></div>
     </div>
-    <div class="photo-item" data-index="184">
+    <div class="photo-item" data-index="184" data-artist="Pietro Lorenzetti (attr.)" data-title="La Crocifissione" data-year="c. 1340">
       <img src="photos/184_photo_cc636bf739b3408c9ef37123f856bab5.jpg" alt="Foto 184 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 184)">
       <div class="photo-num">184</div>
+      <div class="photo-meta"><span class="pm-artist">Pietro Lorenzetti (attr.)</span><span class="pm-title">La Crocifissione</span><span class="pm-year">c. 1340</span></div>
     </div>
-    <div class="photo-item" data-index="185">
+    <div class="photo-item" data-index="185" data-artist="Pablo Picasso" data-title="Due nudi femminili" data-year="1906">
       <img src="photos/185_photo_d2cb370984fc4d379795d2473ef81e63.jpg" alt="Foto 185 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 185)">
       <div class="photo-num">185</div>
+      <div class="photo-meta"><span class="pm-artist">Pablo Picasso</span><span class="pm-title">Due nudi femminili</span><span class="pm-year">1906</span></div>
     </div>
-    <div class="photo-item" data-index="186">
+    <div class="photo-item" data-index="186" data-artist="Pablo Picasso" data-title="Nuda con iris e specchio" data-year="1934">
       <img src="photos/186_photo_d3244f2210ff47669ce418c22f8d124d.jpg" alt="Foto 186 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 186)">
       <div class="photo-num">186</div>
+      <div class="photo-meta"><span class="pm-artist">Pablo Picasso</span><span class="pm-title">Nuda con iris e specchio</span><span class="pm-year">1934</span></div>
     </div>
-    <div class="photo-item" data-index="187">
+    <div class="photo-item" data-index="187" data-artist="Chaïm Soutine" data-title="Bue e testa di vitello" data-year="c. 1925">
       <img src="photos/187_photo_d5d5a3a43a6b417c82fcf1dc0865b7ae.jpg" alt="Foto 187 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 187)">
       <div class="photo-num">187</div>
+      <div class="photo-meta"><span class="pm-artist">Chaïm Soutine</span><span class="pm-title">Bue e testa di vitello</span><span class="pm-year">c. 1925</span></div>
     </div>
-    <div class="photo-item" data-index="188">
+    <div class="photo-item" data-index="188" data-artist="Antonio Corradini" data-title="La Vergine velata (scultura)" data-year="c. 1717–1725">
       <img src="photos/188_photo_d723b94c856c4a28b85e344b75cb6e30.jpg" alt="Foto 188 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 188)">
       <div class="photo-num">188</div>
+      <div class="photo-meta"><span class="pm-artist">Antonio Corradini</span><span class="pm-title">La Vergine velata (scultura)</span><span class="pm-year">c. 1717–1725</span></div>
     </div>
-    <div class="photo-item" data-index="189">
+    <div class="photo-item" data-index="189" data-artist="Jacques-Louis David" data-title="Napoleone al Gran San Bernardo" data-year="1801–1805">
       <img src="photos/189_photo_de3fd0d187b5432fa433b01ed4ba874a.jpg" alt="Foto 189 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 189)">
       <div class="photo-num">189</div>
+      <div class="photo-meta"><span class="pm-artist">Jacques-Louis David</span><span class="pm-title">Napoleone al Gran San Bernardo</span><span class="pm-year">1801–1805</span></div>
     </div>
-    <div class="photo-item" data-index="190">
+    <div class="photo-item" data-index="190" data-artist="Peter Paul Rubens" data-title="Paesaggio con le rovine del Palatino" data-year="c. 1615">
       <img src="photos/190_photo_dfd16590f77a4070a08948bd2f546e9b.jpg" alt="Foto 190 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 190)">
       <div class="photo-num">190</div>
+      <div class="photo-meta"><span class="pm-artist">Peter Paul Rubens</span><span class="pm-title">Paesaggio con le rovine del Palatino</span><span class="pm-year">c. 1615</span></div>
     </div>
-    <div class="photo-item" data-index="191">
+    <div class="photo-item" data-index="191" data-artist="Peter Paul Rubens" data-title="La Fiera di paese (La Kermesse)" data-year="c. 1635–1638">
       <img src="photos/191_photo_e148d34e5bb14183822e0ee7a8c7258c.jpg" alt="Foto 191 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 191)">
       <div class="photo-num">191</div>
+      <div class="photo-meta"><span class="pm-artist">Peter Paul Rubens</span><span class="pm-title">La Fiera di paese (La Kermesse)</span><span class="pm-year">c. 1635–1638</span></div>
     </div>
-    <div class="photo-item" data-index="192">
+    <div class="photo-item" data-index="192" data-artist="Andrea Solario" data-title="La Crocifissione" data-year="1503">
       <img src="photos/192_photo_e14f8a0eae964d00b84071eb1ce5ec3b.jpg" alt="Foto 192 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 192)">
       <div class="photo-num">192</div>
+      <div class="photo-meta"><span class="pm-artist">Andrea Solario</span><span class="pm-title">La Crocifissione</span><span class="pm-year">1503</span></div>
     </div>
-    <div class="photo-item" data-index="193">
+    <div class="photo-item" data-index="193" data-artist="—" data-title="Cartello 'Stop aux rats!', Parigi" data-year="—">
       <img src="photos/193_photo_e3418fecd2bc4929a4401c7e14d20a9c.jpg" alt="Foto 193 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 193)">
       <div class="photo-num">193</div>
+      <div class="photo-meta"><span class="pm-title">Cartello 'Stop aux rats!', Parigi</span><span class="pm-year">—</span></div>
     </div>
-    <div class="photo-item" data-index="194">
+    <div class="photo-item" data-index="194" data-artist="—" data-title="Lamassù (toro androcefalo alato, Khorsabad)" data-year="c. 713–706 a.C.">
       <img src="photos/194_photo_e6b277d1b8cf4e81a3964cda37b79c42.jpg" alt="Foto 194 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 194)">
       <div class="photo-num">194</div>
+      <div class="photo-meta"><span class="pm-title">Lamassù (toro androcefalo alato, Khorsabad)</span><span class="pm-year">c. 713–706 a.C.</span></div>
     </div>
-    <div class="photo-item" data-index="195">
+    <div class="photo-item" data-index="195" data-artist="Pablo Picasso" data-title="La Celestina" data-year="1904">
       <img src="photos/195_photo_e704e936049b4227b29525688c1ee5c8.jpg" alt="Foto 195 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 195)">
       <div class="photo-num">195</div>
+      <div class="photo-meta"><span class="pm-artist">Pablo Picasso</span><span class="pm-title">La Celestina</span><span class="pm-year">1904</span></div>
     </div>
-    <div class="photo-item" data-index="196">
+    <div class="photo-item" data-index="196" data-artist="Henri Matisse" data-title="Nudo disteso drappeggiato" data-year="1923–1924">
       <img src="photos/196_photo_eade4ee207764d33b71e52272eec047b.jpg" alt="Foto 196 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 196)">
       <div class="photo-num">196</div>
+      <div class="photo-meta"><span class="pm-artist">Henri Matisse</span><span class="pm-title">Nudo disteso drappeggiato</span><span class="pm-year">1923–1924</span></div>
     </div>
-    <div class="photo-item" data-index="197">
+    <div class="photo-item" data-index="197" data-artist="—" data-title="Venere di Milo (scultura greca)" data-year="c. 130–100 a.C.">
       <img src="photos/197_photo_ee7434bf64344e59897fb76325f61b6c.jpg" alt="Foto 197 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 197)">
       <div class="photo-num">197</div>
+      <div class="photo-meta"><span class="pm-title">Venere di Milo (scultura greca)</span><span class="pm-year">c. 130–100 a.C.</span></div>
     </div>
-    <div class="photo-item" data-index="198">
+    <div class="photo-item" data-index="198" data-artist="—" data-title="Pallade di Velletri (copia romana)" data-year="c. II sec. d.C.">
       <img src="photos/198_photo_f018e623b9164ae89b5bcd977724ebac.jpg" alt="Foto 198 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 198)">
       <div class="photo-num">198</div>
+      <div class="photo-meta"><span class="pm-title">Pallade di Velletri (copia romana)</span><span class="pm-year">c. II sec. d.C.</span></div>
     </div>
-    <div class="photo-item" data-index="199">
+    <div class="photo-item" data-index="199" data-artist="—" data-title="Ermafrodito dormiente (scultura romana)" data-year="II sec. d.C.">
       <img src="photos/199_photo_f1f2583a10f14b7085c44ee29ff85182.jpg" alt="Foto 199 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 199)">
       <div class="photo-num">199</div>
+      <div class="photo-meta"><span class="pm-title">Ermafrodito dormiente (scultura romana)</span><span class="pm-year">II sec. d.C.</span></div>
     </div>
-    <div class="photo-item" data-index="200">
+    <div class="photo-item" data-index="200" data-artist="Peter Paul Rubens" data-title="Paesaggio con mulino a vento" data-year="c. 1630s">
       <img src="photos/200_photo_f4b4eca2507d487583adb6cfaf139794.jpg" alt="Foto 200 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 200)">
       <div class="photo-num">200</div>
+      <div class="photo-meta"><span class="pm-artist">Peter Paul Rubens</span><span class="pm-title">Paesaggio con mulino a vento</span><span class="pm-year">c. 1630s</span></div>
     </div>
-    <div class="photo-item" data-index="201">
+    <div class="photo-item" data-index="201" data-artist="Antonio Canova" data-title="Amore e Psiche" data-year="1787–1793">
       <img src="photos/201_photo_f5b312390c3447b8a3a1da35b662574d.jpg" alt="Foto 201 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 201)">
       <div class="photo-num">201</div>
+      <div class="photo-meta"><span class="pm-artist">Antonio Canova</span><span class="pm-title">Amore e Psiche</span><span class="pm-year">1787–1793</span></div>
     </div>
-    <div class="photo-item" data-index="202">
+    <div class="photo-item" data-index="202" data-artist="Pablo Picasso" data-title="Vecchio seduto" data-year="1970–1971">
       <img src="photos/202_photo_f9c6c75f4dba4541899115cbe9d7cd2c.jpg" alt="Foto 202 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 202)">
       <div class="photo-num">202</div>
+      <div class="photo-meta"><span class="pm-artist">Pablo Picasso</span><span class="pm-title">Vecchio seduto</span><span class="pm-year">1970–1971</span></div>
     </div>
-    <div class="photo-item" data-index="203">
+    <div class="photo-item" data-index="203" data-artist="—" data-title="Fregio dei leoni (palazzo di Dario I, Susa)" data-year="c. 510 a.C.">
       <img src="photos/203_photo_fa347303f9e54c7fb147f8e7336f6fec.jpg" alt="Foto 203 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 203)">
       <div class="photo-num">203</div>
+      <div class="photo-meta"><span class="pm-title">Fregio dei leoni (palazzo di Dario I, Susa)</span><span class="pm-year">c. 510 a.C.</span></div>
     </div>
-    <div class="photo-item" data-index="204">
+    <div class="photo-item" data-index="204" data-artist="Élisabeth Vigée Le Brun" data-title="Maria Antonietta con i figli" data-year="1787">
       <img src="photos/204_photo_fcfa6a4571994fa89873cc261fa8ebe9.jpg" alt="Foto 204 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 204)">
       <div class="photo-num">204</div>
+      <div class="photo-meta"><span class="pm-artist">Élisabeth Vigée Le Brun</span><span class="pm-title">Maria Antonietta con i figli</span><span class="pm-year">1787</span></div>
     </div>
-    <div class="photo-item" data-index="205">
+    <div class="photo-item" data-index="205" data-artist="—" data-title="Marsia appeso (scultura romana)" data-year="c. II sec. d.C.">
       <img src="photos/205_photo_fdc95052c5a84416b8d2df079f239449.jpg" alt="Foto 205 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 205)">
       <div class="photo-num">205</div>
+      <div class="photo-meta"><span class="pm-title">Marsia appeso (scultura romana)</span><span class="pm-year">c. II sec. d.C.</span></div>
     </div>
   </div>
 </section>
