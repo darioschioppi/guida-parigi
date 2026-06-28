@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parigi 2025 — 19–28 agosto · Louvre, Musée d'Orsay &amp; dintorni</title>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #13131a;
+      --border: #2a2a3a;
+      --accent: #c9a96e;
+      --accent2: #e8c99a;
+      --text: #e8e8f0;
+      --muted: #888898;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: 'Georgia', serif; min-height: 100vh; }
+
+    /* Header */
+    .hero {
+      background: linear-gradient(135deg, #0a0a0f 0%, #1a0a1f 50%, #0a0f1a 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 60px 24px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(201,169,110,0.08) 0%, transparent 70%);
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(201,169,110,0.12);
+      border: 1px solid rgba(201,169,110,0.3);
+      color: var(--accent);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 52px);
+      font-weight: 400;
+      letter-spacing: -0.5px;
+      color: var(--text);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .hero h1 span { color: var(--accent); }
+    .hero-sub {
+      color: var(--muted);
+      font-size: 16px;
+      font-style: italic;
+      margin-bottom: 32px;
+    }
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .hero-meta span {
+      font-size: 13px;
+      color: var(--muted);
+      letter-spacing: 1px;
+    }
+    .hero-meta strong { color: var(--accent2); }
+
+    /* Gallery section */
+    .gallery-section {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+    .gallery-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .gallery-title {
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--text);
+    }
+    .gallery-title span { color: var(--accent); }
+    .gallery-count {
+      font-size: 13px;
+      color: var(--muted);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 6px 14px;
+      border-radius: 20px;
+    }
+
+    /* Photo grid */
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 4px;
+    }
+    .photo-item {
+      position: relative;
+      aspect-ratio: 1;
+      overflow: hidden;
+      cursor: pointer;
+      background: var(--surface);
+    }
+    .photo-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease, filter 0.3s ease;
+      filter: brightness(0.92);
+    }
+    .photo-item:hover img {
+      transform: scale(1.06);
+      filter: brightness(1.05);
+    }
+    .photo-num {
+      position: absolute;
+      bottom: 8px; right: 10px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.5);
+      font-family: monospace;
+      pointer-events: none;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    }
+
+    /* Lightbox */
+    #lightbox {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.96);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+    #lightbox.open { display: flex; }
+    #lightbox img {
+      max-width: 92vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 4px;
+      box-shadow: 0 20px 80px rgba(0,0,0,0.8);
+    }
+    .lb-counter {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+    .lb-close {
+      position: fixed; top: 20px; right: 24px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: white;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .lb-close:hover { background: rgba(255,255,255,0.2); }
+    .lb-nav {
+      position: fixed;
+      top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: white;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .lb-nav:hover { background: rgba(255,255,255,0.18); }
+    .lb-prev { left: 16px; }
+    .lb-next { right: 16px; }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 32px;
+      color: var(--muted);
+      font-size: 13px;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) {
+      .photo-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 3px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-badge">✦ Galleria privata ✦</div>
+  <h1>Parigi <span>2025</span></h1>
+  <p class="hero-sub">Louvre · Musée d'Orsay · bistrot autentici &amp; quartieri nascosti</p>
+  <div class="hero-meta">
+    <span>📅 <strong>19–28 agosto 2025</strong></span>
+    <span>🏙️ <strong>Parigi, Francia</strong></span>
+    <span>📸 <strong>82 foto</strong></span>
+  </div>
+</div>
+
+<section class="gallery-section">
+  <div class="gallery-header">
+    <div class="gallery-title">📸 Foto della vacanza — <span>Parigi 2025</span></div>
+    <div class="gallery-count">82 foto · agosto 2025</div>
+  </div>
+
+  <div class="photo-grid" id="photoGrid">
+
+    <div class="photo-item" data-index="1">
+      <img src="photos/01_photo_022a30d386cc431da20aee6688914a2f.jpg" alt="Foto 1 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 1)">
+      <div class="photo-num">1</div>
+    </div>
+    <div class="photo-item" data-index="2">
+      <img src="photos/02_photo_03cceb7ecc57402c9f954bf9475e32c2.jpg" alt="Foto 2 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 2)">
+      <div class="photo-num">2</div>
+    </div>
+    <div class="photo-item" data-index="3">
+      <img src="photos/03_photo_089fa74add16489bbbcf9b0cfdc0e32b.jpg" alt="Foto 3 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 3)">
+      <div class="photo-num">3</div>
+    </div>
+    <div class="photo-item" data-index="4">
+      <img src="photos/04_photo_0d228fdd382f483b8ded29a4ad888691.jpg" alt="Foto 4 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 4)">
+      <div class="photo-num">4</div>
+    </div>
+    <div class="photo-item" data-index="5">
+      <img src="photos/05_photo_13a4a082a5fc45a496b5fc82cf7925c6.jpg" alt="Foto 5 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 5)">
+      <div class="photo-num">5</div>
+    </div>
+    <div class="photo-item" data-index="6">
+      <img src="photos/06_photo_16cec9093f934e2c99bb93dd93cbff25.jpg" alt="Foto 6 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 6)">
+      <div class="photo-num">6</div>
+    </div>
+    <div class="photo-item" data-index="7">
+      <img src="photos/07_photo_1a7b46ad4dc143f38d6fbf68f144513a.jpg" alt="Foto 7 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 7)">
+      <div class="photo-num">7</div>
+    </div>
+    <div class="photo-item" data-index="8">
+      <img src="photos/08_photo_1bba4979994d4fee9ab6b49a082b748a.jpg" alt="Foto 8 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 8)">
+      <div class="photo-num">8</div>
+    </div>
+    <div class="photo-item" data-index="9">
+      <img src="photos/09_photo_1cb43dd417ca41de967f72f70ea3a50d.jpg" alt="Foto 9 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 9)">
+      <div class="photo-num">9</div>
+    </div>
+    <div class="photo-item" data-index="10">
+      <img src="photos/10_photo_1d6ac3a06095407a83e90a6b2a284f6e.jpg" alt="Foto 10 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 10)">
+      <div class="photo-num">10</div>
+    </div>
+    <div class="photo-item" data-index="11">
+      <img src="photos/11_photo_1e905d98e2bc44c1b5024c2073dfba94.jpg" alt="Foto 11 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 11)">
+      <div class="photo-num">11</div>
+    </div>
+    <div class="photo-item" data-index="12">
+      <img src="photos/12_photo_1ebd38d5873f47c3b57fdae6fc6aef0a.jpg" alt="Foto 12 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 12)">
+      <div class="photo-num">12</div>
+    </div>
+    <div class="photo-item" data-index="13">
+      <img src="photos/13_photo_1ed41db068194594ad51f8e255035369.jpg" alt="Foto 13 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 13)">
+      <div class="photo-num">13</div>
+    </div>
+    <div class="photo-item" data-index="14">
+      <img src="photos/14_photo_241eef484c034731a07a5fae8fab76b8.jpg" alt="Foto 14 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 14)">
+      <div class="photo-num">14</div>
+    </div>
+    <div class="photo-item" data-index="15">
+      <img src="photos/15_photo_2941482bfb7a4ea4a414070e2db25816.jpg" alt="Foto 15 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 15)">
+      <div class="photo-num">15</div>
+    </div>
+    <div class="photo-item" data-index="16">
+      <img src="photos/16_photo_2b9e7cd4d1814b899908070337aef66e.jpg" alt="Foto 16 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 16)">
+      <div class="photo-num">16</div>
+    </div>
+    <div class="photo-item" data-index="17">
+      <img src="photos/17_photo_2e49d8d9d8814802adfb3b93e5fe01d4.jpg" alt="Foto 17 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 17)">
+      <div class="photo-num">17</div>
+    </div>
+    <div class="photo-item" data-index="18">
+      <img src="photos/18_photo_2f10421a3f27471690d010a4d32185f3.jpg" alt="Foto 18 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 18)">
+      <div class="photo-num">18</div>
+    </div>
+    <div class="photo-item" data-index="19">
+      <img src="photos/19_photo_2f9a5353601643b9a3217976cdb2d380.jpg" alt="Foto 19 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 19)">
+      <div class="photo-num">19</div>
+    </div>
+    <div class="photo-item" data-index="20">
+      <img src="photos/20_photo_2fc03d39cfb04e649bfff62d30eee371.jpg" alt="Foto 20 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 20)">
+      <div class="photo-num">20</div>
+    </div>
+    <div class="photo-item" data-index="21">
+      <img src="photos/21_photo_306158be1de14008b12550ac1e5a6404.jpg" alt="Foto 21 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 21)">
+      <div class="photo-num">21</div>
+    </div>
+    <div class="photo-item" data-index="22">
+      <img src="photos/22_photo_40ea58f348ad47ffa799d55e3a33256f.jpg" alt="Foto 22 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 22)">
+      <div class="photo-num">22</div>
+    </div>
+    <div class="photo-item" data-index="23">
+      <img src="photos/23_photo_46be905519894c09a484525f55812330.jpg" alt="Foto 23 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 23)">
+      <div class="photo-num">23</div>
+    </div>
+    <div class="photo-item" data-index="24">
+      <img src="photos/24_photo_4761c75ca1e9473fb3297c7007835ce2.jpg" alt="Foto 24 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 24)">
+      <div class="photo-num">24</div>
+    </div>
+    <div class="photo-item" data-index="25">
+      <img src="photos/25_photo_4cbab4e2795746ad8443c600f5b5491a.jpg" alt="Foto 25 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 25)">
+      <div class="photo-num">25</div>
+    </div>
+    <div class="photo-item" data-index="26">
+      <img src="photos/26_photo_4dd7af243cee47f589d5da76fb09eaba.jpg" alt="Foto 26 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 26)">
+      <div class="photo-num">26</div>
+    </div>
+    <div class="photo-item" data-index="27">
+      <img src="photos/27_photo_4ffe7305899d4a6ead29e05237dc8469.jpg" alt="Foto 27 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 27)">
+      <div class="photo-num">27</div>
+    </div>
+    <div class="photo-item" data-index="28">
+      <img src="photos/28_photo_56cfd2ab8d5e45e5924b9593f3914a56.jpg" alt="Foto 28 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 28)">
+      <div class="photo-num">28</div>
+    </div>
+    <div class="photo-item" data-index="29">
+      <img src="photos/29_photo_575059bf74b04cfaa9c84752a3ba56b2.jpg" alt="Foto 29 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 29)">
+      <div class="photo-num">29</div>
+    </div>
+    <div class="photo-item" data-index="30">
+      <img src="photos/30_photo_5980ff9cc0ab49539ffd4299edf2d03e.jpg" alt="Foto 30 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 30)">
+      <div class="photo-num">30</div>
+    </div>
+    <div class="photo-item" data-index="31">
+      <img src="photos/31_photo_5a672fe02aa340069ef09214e1d58579.jpg" alt="Foto 31 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 31)">
+      <div class="photo-num">31</div>
+    </div>
+    <div class="photo-item" data-index="32">
+      <img src="photos/32_photo_5f8c4030fc9346c38cfd0a8dbd69ddd8.jpg" alt="Foto 32 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 32)">
+      <div class="photo-num">32</div>
+    </div>
+    <div class="photo-item" data-index="33">
+      <img src="photos/33_photo_5fcaf974f54a46ff85f8b85ba4ec29a9.jpg" alt="Foto 33 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 33)">
+      <div class="photo-num">33</div>
+    </div>
+    <div class="photo-item" data-index="34">
+      <img src="photos/34_photo_63844312148d4552aa739c0a3c378caa.jpg" alt="Foto 34 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 34)">
+      <div class="photo-num">34</div>
+    </div>
+    <div class="photo-item" data-index="35">
+      <img src="photos/35_photo_6645101364484f1886d8faf980fed6af.jpg" alt="Foto 35 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 35)">
+      <div class="photo-num">35</div>
+    </div>
+    <div class="photo-item" data-index="36">
+      <img src="photos/36_photo_6725d25369874ee892d40cb62f9a8c24.jpg" alt="Foto 36 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 36)">
+      <div class="photo-num">36</div>
+    </div>
+    <div class="photo-item" data-index="37">
+      <img src="photos/37_photo_686eaa5b19a84a2d8e483e673fcaf1b1.jpg" alt="Foto 37 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 37)">
+      <div class="photo-num">37</div>
+    </div>
+    <div class="photo-item" data-index="38">
+      <img src="photos/38_photo_6927bf16e9e64f0ba799ddfcb4c56b69.jpg" alt="Foto 38 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 38)">
+      <div class="photo-num">38</div>
+    </div>
+    <div class="photo-item" data-index="39">
+      <img src="photos/39_photo_69d3a2e217754fd983025ca8f0579ea6.jpg" alt="Foto 39 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 39)">
+      <div class="photo-num">39</div>
+    </div>
+    <div class="photo-item" data-index="40">
+      <img src="photos/40_photo_6c1ac7d419c4410086fc12070bd828c7.jpg" alt="Foto 40 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 40)">
+      <div class="photo-num">40</div>
+    </div>
+    <div class="photo-item" data-index="41">
+      <img src="photos/41_photo_6deb7f60e7f242f4a58e46cfef6ee1d2.jpg" alt="Foto 41 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 41)">
+      <div class="photo-num">41</div>
+    </div>
+    <div class="photo-item" data-index="42">
+      <img src="photos/42_photo_6e34a11795e441c180b54a514fe15762.jpg" alt="Foto 42 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 42)">
+      <div class="photo-num">42</div>
+    </div>
+    <div class="photo-item" data-index="43">
+      <img src="photos/43_photo_6ea5a346e02443fe95c33359341babfb.jpg" alt="Foto 43 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 43)">
+      <div class="photo-num">43</div>
+    </div>
+    <div class="photo-item" data-index="44">
+      <img src="photos/44_photo_6ee8096120c14e6a91214aae25817bfb.jpg" alt="Foto 44 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 44)">
+      <div class="photo-num">44</div>
+    </div>
+    <div class="photo-item" data-index="45">
+      <img src="photos/45_photo_73e5a9b611cc4cfaaae78748f87c6b31.jpg" alt="Foto 45 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 45)">
+      <div class="photo-num">45</div>
+    </div>
+    <div class="photo-item" data-index="46">
+      <img src="photos/46_photo_76af9facb5f1400485e3fe1be1d07cec.jpg" alt="Foto 46 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 46)">
+      <div class="photo-num">46</div>
+    </div>
+    <div class="photo-item" data-index="47">
+      <img src="photos/47_photo_7b89c7f6baeb437a869a4354572f80b7.jpg" alt="Foto 47 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 47)">
+      <div class="photo-num">47</div>
+    </div>
+    <div class="photo-item" data-index="48">
+      <img src="photos/48_photo_7e4beb4fd902412c9584c25ef3c3e8f3.jpg" alt="Foto 48 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 48)">
+      <div class="photo-num">48</div>
+    </div>
+    <div class="photo-item" data-index="49">
+      <img src="photos/49_photo_82c7029d654448189e15c5109a3d4ed3.jpg" alt="Foto 49 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 49)">
+      <div class="photo-num">49</div>
+    </div>
+    <div class="photo-item" data-index="50">
+      <img src="photos/50_photo_851030969ccc489380ae3c4655f535a0.jpg" alt="Foto 50 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 50)">
+      <div class="photo-num">50</div>
+    </div>
+    <div class="photo-item" data-index="51">
+      <img src="photos/51_photo_8d35e94406354ea8bdacb17ad7dbd221.jpg" alt="Foto 51 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 51)">
+      <div class="photo-num">51</div>
+    </div>
+    <div class="photo-item" data-index="52">
+      <img src="photos/52_photo_8f7cb5e9b0da46e18eadc623001c4dac.jpg" alt="Foto 52 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 52)">
+      <div class="photo-num">52</div>
+    </div>
+    <div class="photo-item" data-index="53">
+      <img src="photos/53_photo_93038ff109df459aab5f98ff17f2f149.jpg" alt="Foto 53 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 53)">
+      <div class="photo-num">53</div>
+    </div>
+    <div class="photo-item" data-index="54">
+      <img src="photos/54_photo_972b2ccc45e44bac8efd0631bedc793c.jpg" alt="Foto 54 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 54)">
+      <div class="photo-num">54</div>
+    </div>
+    <div class="photo-item" data-index="55">
+      <img src="photos/55_photo_a0ce334572124665a802caa13ed0d7fe.jpg" alt="Foto 55 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 55)">
+      <div class="photo-num">55</div>
+    </div>
+    <div class="photo-item" data-index="56">
+      <img src="photos/56_photo_a192e9df741442bc9994b2afc0461a37.jpg" alt="Foto 56 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 56)">
+      <div class="photo-num">56</div>
+    </div>
+    <div class="photo-item" data-index="57">
+      <img src="photos/57_photo_a2269352530f42b1b4a296b5c1d981aa.jpg" alt="Foto 57 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 57)">
+      <div class="photo-num">57</div>
+    </div>
+    <div class="photo-item" data-index="58">
+      <img src="photos/58_photo_a3be0a85745249218e1f27304287e15d.jpg" alt="Foto 58 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 58)">
+      <div class="photo-num">58</div>
+    </div>
+    <div class="photo-item" data-index="59">
+      <img src="photos/59_photo_a547a6943d6c4c038b48db54be1f8cc5.jpg" alt="Foto 59 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 59)">
+      <div class="photo-num">59</div>
+    </div>
+    <div class="photo-item" data-index="60">
+      <img src="photos/60_photo_a601ed09bea64d669debfc052a707b33.jpg" alt="Foto 60 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 60)">
+      <div class="photo-num">60</div>
+    </div>
+    <div class="photo-item" data-index="61">
+      <img src="photos/61_photo_aebb126520ab49f7ba4f548f84a9ef30.jpg" alt="Foto 61 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 61)">
+      <div class="photo-num">61</div>
+    </div>
+    <div class="photo-item" data-index="62">
+      <img src="photos/62_photo_b09d477d97804bcc9f8f73b47b262e42.jpg" alt="Foto 62 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 62)">
+      <div class="photo-num">62</div>
+    </div>
+    <div class="photo-item" data-index="63">
+      <img src="photos/63_photo_b21b2ff7ded44c93aaea86b66a8864a1.jpg" alt="Foto 63 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 63)">
+      <div class="photo-num">63</div>
+    </div>
+    <div class="photo-item" data-index="64">
+      <img src="photos/64_photo_b46ad01dca1e4e84b61ced3a9ce15d0c.jpg" alt="Foto 64 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 64)">
+      <div class="photo-num">64</div>
+    </div>
+    <div class="photo-item" data-index="65">
+      <img src="photos/65_photo_b92f95102f2243e18ab938483dc4c654.jpg" alt="Foto 65 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 65)">
+      <div class="photo-num">65</div>
+    </div>
+    <div class="photo-item" data-index="66">
+      <img src="photos/66_photo_c3bdb982318f44e68cf31897450071e0.jpg" alt="Foto 66 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 66)">
+      <div class="photo-num">66</div>
+    </div>
+    <div class="photo-item" data-index="67">
+      <img src="photos/67_photo_c78dc2909ce64e458cc1b0678e63c820.jpg" alt="Foto 67 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 67)">
+      <div class="photo-num">67</div>
+    </div>
+    <div class="photo-item" data-index="68">
+      <img src="photos/68_photo_cdc0a7f8a5c04f28a28caf5a16e5ff51.jpg" alt="Foto 68 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 68)">
+      <div class="photo-num">68</div>
+    </div>
+    <div class="photo-item" data-index="69">
+      <img src="photos/69_photo_d1cfc71cf41e455e948b7ce7e1ed1719.jpg" alt="Foto 69 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 69)">
+      <div class="photo-num">69</div>
+    </div>
+    <div class="photo-item" data-index="70">
+      <img src="photos/70_photo_d27bacc3696a46438ef6c0a3f16ed683.jpg" alt="Foto 70 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 70)">
+      <div class="photo-num">70</div>
+    </div>
+    <div class="photo-item" data-index="71">
+      <img src="photos/71_photo_d60dfa58d06d4eaaade2799308ce9945.jpg" alt="Foto 71 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 71)">
+      <div class="photo-num">71</div>
+    </div>
+    <div class="photo-item" data-index="72">
+      <img src="photos/72_photo_d90716246bfc44119ec22425f2e84e2b.jpg" alt="Foto 72 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 72)">
+      <div class="photo-num">72</div>
+    </div>
+    <div class="photo-item" data-index="73">
+      <img src="photos/73_photo_ddf9e5496e2640b6920774d43f722fea.jpg" alt="Foto 73 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 73)">
+      <div class="photo-num">73</div>
+    </div>
+    <div class="photo-item" data-index="74">
+      <img src="photos/74_photo_de1b447c01ff4688b2c8a754d3d6541d.jpg" alt="Foto 74 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 74)">
+      <div class="photo-num">74</div>
+    </div>
+    <div class="photo-item" data-index="75">
+      <img src="photos/75_photo_e2eba8d6db9244c988b71dfcff5b369a.jpg" alt="Foto 75 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 75)">
+      <div class="photo-num">75</div>
+    </div>
+    <div class="photo-item" data-index="76">
+      <img src="photos/76_photo_e360936082604cde9e7fe6a8b71ab334.jpg" alt="Foto 76 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 76)">
+      <div class="photo-num">76</div>
+    </div>
+    <div class="photo-item" data-index="77">
+      <img src="photos/77_photo_e88fc00b9d164b0086f91fa60b4bbee7.jpg" alt="Foto 77 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 77)">
+      <div class="photo-num">77</div>
+    </div>
+    <div class="photo-item" data-index="78">
+      <img src="photos/78_photo_e8aeda3b727240faaa42c53bbfe2c593.jpg" alt="Foto 78 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 78)">
+      <div class="photo-num">78</div>
+    </div>
+    <div class="photo-item" data-index="79">
+      <img src="photos/79_photo_e9f1648145504a9cb8184b450b844083.jpg" alt="Foto 79 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 79)">
+      <div class="photo-num">79</div>
+    </div>
+    <div class="photo-item" data-index="80">
+      <img src="photos/80_photo_ee044dccd5154f25be7517bf3d2d7ea9.jpg" alt="Foto 80 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 80)">
+      <div class="photo-num">80</div>
+    </div>
+    <div class="photo-item" data-index="81">
+      <img src="photos/81_photo_eef4290cef5d40f4afe6c69b59487ab5.jpg" alt="Foto 81 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 81)">
+      <div class="photo-num">81</div>
+    </div>
+    <div class="photo-item" data-index="82">
+      <img src="photos/82_photo_f5975c455add4472ae3d50c24cf8bf63.jpg" alt="Foto 82 - Parigi 2025" loading="lazy" onclick="openLightbox(this.src, 82)">
+      <div class="photo-num">82</div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox">
+  <button class="lb-close" onclick="closeLightbox()">✕</button>
+  <button class="lb-nav lb-prev" onclick="navLightbox(-1)">‹</button>
+  <img id="lb-img" src="" alt="">
+  <div class="lb-counter" id="lb-counter"></div>
+  <button class="lb-nav lb-next" onclick="navLightbox(1)">›</button>
+</div>
+
+<footer>
+  Parigi · 19–28 agosto 2025 · 82 foto
+</footer>
+
+<script>
+  let currentIdx = 0;
+  const photos = Array.from(document.querySelectorAll('.photo-item img'));
+
+  function openLightbox(src, idx) {
+    currentIdx = idx - 1;
+    document.getElementById('lb-img').src = src;
+    document.getElementById('lb-counter').textContent = idx + ' / ' + photos.length;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function navLightbox(dir) {
+    currentIdx = (currentIdx + dir + photos.length) % photos.length;
+    const img = photos[currentIdx];
+    document.getElementById('lb-img').src = img.src;
+    document.getElementById('lb-counter').textContent = (currentIdx + 1) + ' / ' + photos.length;
+  }
+
+  document.addEventListener('keydown', e => {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') navLightbox(1);
+    if (e.key === 'ArrowLeft') navLightbox(-1);
+  });
+</script>
+
+</body>
+</html>
